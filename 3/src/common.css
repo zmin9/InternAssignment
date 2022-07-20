@@ -1,0 +1,9 @@
+:root {
+    --dark-black: #292B35;
+    --main-black: #575767;
+    --light-black: #B9B9BE;
+
+    --main-color: #1294F2;
+    --bg-main-color: #F8F8F8;
+    --bg-sub-color: rgba(0, 0, 0, 0.06);
+}
