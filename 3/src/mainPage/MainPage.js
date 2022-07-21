@@ -17,7 +17,10 @@ function MainPage () {
     <>
       <Stack spacing={2}>
         <Stack spacing={1}>
-          <Text size="32px" weight="700" color="var(--black-dark)" lineHeight="38.73px">2020년 7월 1일</Text>
+          <Stack row spacing={1}>
+            <Text size="32px" weight="700" color="var(--black-dark)" lineHeight="38.73px">2020년 7월 1일</Text>
+            <Text>여긴버튼자리</Text>
+          </Stack>
           <Text size="14px" weight="600" color="var(--black-main)">3개 진행중, 2개 완료됨</Text>
         </Stack>
         <hr/>
