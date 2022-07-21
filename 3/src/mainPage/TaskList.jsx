@@ -1,11 +1,11 @@
-import Text from "../Text/Text";
 import TaskItem from "./TaskItem";
 import Stack from "../Stack/Stack";
+import Typography from "../Text/Typography";
 
 const TaskList = ({title, tasks}) => {
   return (
     <Stack spacing={2}>
-      <Text size="18px" weight="700" color="var(--black-main)"> {title} </Text>
+      <Typography type="subtitle"> {title} </Typography>
       {tasks.map((task) =>
         <TaskItem key={task.id} task={task}/>
       )}

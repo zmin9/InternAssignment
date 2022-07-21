@@ -1,6 +1,7 @@
 import Text from "../Text/Text";
 import Stack from "../Stack/Stack";
 import TaskList from "./TaskList";
+import Typography from "../Text/Typography";
 
 function MainPage () {
   const doingTaskList = [
@@ -18,7 +19,7 @@ function MainPage () {
       <Stack spacing={2}>
         <Stack spacing={1}>
           <Stack row spacing={1}>
-            <Text size="32px" weight="700" color="var(--black-dark)" lineHeight="38.73px">2020년 7월 1일</Text>
+            <Typography type="title">2020년 7월 1일</Typography>
             <Text>여긴버튼자리</Text>
           </Stack>
           <Text size="14px" weight="600" color="var(--black-main)">3개 진행중, 2개 완료됨</Text>
@@ -27,7 +28,7 @@ function MainPage () {
         <Stack spacing={4}>
           <TaskList title="진행중" tasks={doingTaskList} />
           <TaskList title="완료됨" tasks={doneTaskList} />
-        </Stack>
+       </Stack>
       </Stack>
     </>
   );
