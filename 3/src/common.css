@@ -1,9 +1,20 @@
 :root {
-    --dark-black: #292B35;
-    --main-black: #575767;
-    --light-black: #B9B9BE;
+    --black-dark: #292B35;
+    --black-main: #575767;
+    --black-light: #B9B9BE;
 
     --main-color: #1294F2;
     --bg-main-color: #F8F8F8;
     --bg-sub-color: rgba(0, 0, 0, 0.06);
+
+    --spacing-0: 4px;
+    --spacing-1: 8px;
+    --spacing-2: 16px;
+    --spacing-3: 24px;
+    --spacing-4: 32px;
+}
+
+hr {
+    margin: 0;
+    border: solid 2px rgba(0, 0, 0, 0.03);
 }
