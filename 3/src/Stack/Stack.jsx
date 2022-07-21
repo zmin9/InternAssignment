@@ -3,6 +3,7 @@ import styled from "styled-components";
 const StackContainer = styled.div`
   display: flex;
   flex-direction: ${props => props.row? "row" : "column"};
+  align-items: ${props => props.alignCenter? "center" : null};
 `;
 
 const StackItem = styled.div`
@@ -15,13 +16,13 @@ const StackItem = styled.div`
   }
 `;
 
-const Stack = ({children, spacing, row}) => {
+const Stack = ({children, spacing, row, alignCenter}) => {
   const checkIterable = (obj) => {
     if (obj === null || obj === undefined) return false;
     return typeof obj[Symbol.iterator] === "function";
   }
   return (
-    <StackContainer row={row}>
+    <StackContainer row={row} alignCenter={alignCenter}>
       { checkIterable(children)?
           children.flat().map((child, idx) =>
             <StackItem key={idx} spacing={spacing} row={row}>

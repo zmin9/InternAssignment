@@ -16,10 +16,16 @@
 
 hr {
     margin: 0;
-    border: solid 2px rgba(0, 0, 0, 0.03);
+    border: solid 1px rgba(0, 0, 0, 0.03);
 }
 
 h1, h2 {
     margin: 0;
     padding: 0;
+}
+
+.fixed-rb-button {
+    position: fixed;
+    right: 16px;
+    bottom: 40px;
 }

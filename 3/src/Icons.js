@@ -1,4 +1,4 @@
-const Icon = ({type}) => {
+const Icon = ({type, size}) => {
   const vectorByType = {
     "back" : <><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></>,
     "calendar-right": <polyline points="9 18 15 12 9 6"></polyline>,
@@ -9,6 +9,8 @@ const Icon = ({type}) => {
   }
   return (
     <svg
+      width={size}
+      height={size}
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
