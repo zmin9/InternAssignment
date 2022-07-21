@@ -24,8 +24,13 @@ h1, h2 {
     padding: 0;
 }
 
-.fixed-rb-button {
+.fixed-rb {
     position: fixed;
     right: 16px;
+    bottom: 40px;
+}
+
+.absolute-b {
+    position: absolute;
     bottom: 40px;
 }

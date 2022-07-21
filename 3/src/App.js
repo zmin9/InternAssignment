@@ -1,16 +1,18 @@
 import styled from "styled-components";
 import MainPage from "./mainPage/MainPage";
+import AddPage from "./addPage/AddPage";
 
 const WrapPaddingBox = styled.div`
+  position: relative;
   min-height: 100vh;
-  padding: 0 var(--spacing-2);
-  background-color: var(--bg-main-color);
+  margin: 0 var(--spacing-2);
 `;
 
 function App() {
   return (
     <WrapPaddingBox>
-        <MainPage/>
+      <MainPage />
+      {/*<AddPage />*/}
     </WrapPaddingBox>
   );
 }
