@@ -1,6 +1,7 @@
 import Text from "../Text/Text";
 import Stack from "../Stack/Stack";
 import TaskList from "./TaskList";
+import {PrimaryButton} from "../Button/BasicButton";
 import Typography from "../Text/Typography";
 
 function MainPage () {
@@ -19,7 +20,7 @@ function MainPage () {
       <Stack spacing={2}>
         <Stack spacing={1}>
           <Stack row spacing={1}>
-            <Typography type="title">2020년 7월 1일</Typography>
+            <h1><Typography type="title">2020년 7월 1일</Typography></h1>
             <Text>여긴버튼자리</Text>
           </Stack>
           <Text size="14px" weight="600" color="var(--black-main)">3개 진행중, 2개 완료됨</Text>
@@ -30,6 +31,7 @@ function MainPage () {
           <TaskList title="완료됨" tasks={doneTaskList} />
        </Stack>
       </Stack>
+      <PrimaryButton fullWidth><Typography type="button">태스크 추가</Typography></PrimaryButton>
     </>
   );
 }

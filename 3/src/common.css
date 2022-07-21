@@ -18,3 +18,8 @@ hr {
     margin: 0;
     border: solid 2px rgba(0, 0, 0, 0.03);
 }
+
+h1, h2 {
+    margin: 0;
+    padding: 0;
+}
