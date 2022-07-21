@@ -13,16 +13,15 @@ const Item = styled.div`
   }
 `;
 
-const Stack = ({items, spacing, row}) => {
+const Stack = ({children, spacing, row}) => {
+  if(Object.is(typeof children, String)) return children;
   return (
     <StackContainer row={row}>
-      {
-        items.map((item) =>
-          <Item spacing={spacing} row={row}>
-            {item}
-          </Item>
-        )
-      }
+      {children.map((child, idx) =>
+        <Item key={idx} spacing={spacing} row={row}>
+          {child}
+        </Item>
+      )}
     </StackContainer>
   );
 };
