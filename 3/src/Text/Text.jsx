@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const TextElement = styled.span`
+const Text = styled.span`
   font-size: ${props => props.size};
   font-weight: ${props => props.weight};
   color: ${props => props.color};
@@ -8,12 +8,12 @@ const TextElement = styled.span`
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
 `;
 
-const Text = ({ children, size, weight, color, lineHeight }) => {
-  return (
-    <TextElement size={size} weight={weight} color={color} lineHeight={lineHeight}>
-      {children}
-    </TextElement>
-  );
-};
+// const Text = ({ children, size, weight, color, lineHeight }) => {
+//   return (
+//     <TextElement size={size} weight={weight} color={color} lineHeight={lineHeight}>
+//       {children}
+//     </TextElement>
+//   );
+// };
 
 export default Text;

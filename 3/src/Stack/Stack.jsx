@@ -23,7 +23,7 @@ const Stack = ({children, spacing, row}) => {
   return (
     <StackContainer row={row}>
       { checkIterable(children)?
-          children.map((child, idx) =>
+          children.flat().map((child, idx) =>
             <StackItem key={idx} spacing={spacing} row={row}>
               {child}
             </StackItem>

@@ -1,7 +1,18 @@
 import Text from "../Text/Text";
 import Stack from "../Stack/Stack";
+import TaskList from "./TaskList";
 
 function MainPage () {
+  const doingTaskList = [
+    {id: 0, isDone: false, title:"월급 통장 만들기", category:"💰 은행"},
+    {id: 1, isDone: false, title:"월세 내기", category:"💰 은행"},
+    {id: 2, isDone: false, title:"손 세정제", category:"🛒 쇼핑"}
+  ];
+  const doneTaskList = [
+    {id: 3, isDone: false, title:"영화표 예매하기", category:"💪 할 일"},
+    {id: 4, isDone: false, title:"블로그 작성하기", category:"💪 할 일"}
+  ];
+  
   return (
     <>
       <Stack spacing={2}>
@@ -11,19 +22,8 @@ function MainPage () {
         </Stack>
         <hr/>
         <Stack spacing={4}>
-          <Stack spacing={2}>
-            <Text size="18px" weight="700" color="var(--black-main)"> 진행중 </Text>
-            <Stack row spacing={2}>
-              <div>네모</div>
-              <Stack spacing={0}>
-                <Text size="14px" weight="500" color="var(--black-main)" lineHeight="24px">월급 통장 만들기</Text>
-                <Text size="14px" weight="600" color="var(--black-light)">💰 은행</Text>
-              </Stack>
-            </Stack>
-          </Stack>
-          <Stack spaing={2}>
-            <Text size="18px" weight="700" color="var(--black-main)"> 완료됨 </Text>
-          </Stack>
+          <TaskList title="진행중" tasks={doingTaskList} />
+          <TaskList title="완료됨" tasks={doneTaskList} />
         </Stack>
       </Stack>
     </>
