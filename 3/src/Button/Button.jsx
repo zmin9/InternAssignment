@@ -10,14 +10,6 @@ const BasicButton = styled.button`
   transition-duration: 0.2s;
   
   
-  :hover{
-    filter: brightness(0.95);
-    
-    :active {
-      filter: brightness(0.9);
-    }
-  }
-
   :active {
     filter: brightness(0.9);
   }

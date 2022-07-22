@@ -3,7 +3,7 @@ class Data {
     this._taskDataArr = JSON.parse(localStorage.getItem('tasks')) || [];
     this._selectedCategory = "전체";
   }
-  get #taskDataArr() { return JSON.parse(JSON.stringify(this._taskDataArr)); }
+  get taskDataArr() { return JSON.parse(JSON.stringify(this._taskDataArr)); }
   get selectedCategory() { return this._selectedCategory; }
   // set setSelectedCategory(category) { this._selectedCategory = category}
   
@@ -14,13 +14,11 @@ class Data {
   //       else return [...result, category];
   //     }, []);
   // }
-  get doingTaskArr() { return this.#filteredTaskArr.filter((task)=>!task.isDone); }
-  get doneTaskArr() { return this.#filteredTaskArr.filter((task)=>task.isDone); }
   
-  get #filteredTaskArr() {
+  get filteredTaskArr() {
     return this._selectedCategory === "전체" ?
-      this.#taskDataArr :
-      this.#taskDataArr.filter((task) => task.category === this.selectedCategory);
+      this.taskDataArr :
+      this.taskDataArr.filter((task) => task.category === this.selectedCategory);
   }
   
   addTask(title, category){
@@ -38,12 +36,12 @@ class Data {
   //   taskDataArr.splice(findIndexOf(taskId), 1);
   //   this.#save();
   // }
-  // function modifyTask(taskId, title, category) {
+  // modifyTask(task) {
   //   const pre = taskDataArr[findIndexOf(taskId)];
   //   taskDataArr[findIndexOf(taskId)] = {
   //     id: taskId * 1,
-  //     title: title || pre.title,
-  //     category: category || pre.category,
+  //     title: task.title || pre.title,
+  //     category: task.category || pre.category,
   //     isDone: pre.isDone
   //   }
   //   this.#save();
@@ -56,8 +54,13 @@ class Data {
   //   };
   //   this.#save();
   // }
-  toggleChecking() {
-  
+  toggleChecking(task) {
+    const taskIdx = this.taskDataArr.map((task)=> task.id).indexOf(task.id);
+    this._taskDataArr[taskIdx] = {
+      ...task,
+      isDone: !task.isDone
+    };
+    this.#save();
   }
   
   #save(){

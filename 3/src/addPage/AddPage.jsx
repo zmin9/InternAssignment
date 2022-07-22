@@ -21,7 +21,7 @@ const TaskInput = styled.input`
   }
 `;
 
-const AddPage = ({data}) => {
+function AddPage ({data}) {
   const nav = useNavigate();
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState('');
@@ -55,6 +55,6 @@ const AddPage = ({data}) => {
       <PrimaryButton fullWidth className="absolute-b" onClick={addTaskOnClickHandler}><Typography type="button">태스크 추가</Typography></PrimaryButton>
     </Wrapping>
   );
-};
+}
 
 export default AddPage;

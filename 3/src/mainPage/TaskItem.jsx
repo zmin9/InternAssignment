@@ -2,6 +2,7 @@ import Stack from "../Layout/Stack";
 import Text from "../Text/Text";
 import styled from "styled-components";
 import Icon from "../Icons";
+import {useState} from "react";
 
 const HidedCheckBoxForLabel = styled.input`
   display: none;
@@ -38,10 +39,12 @@ const CheckBox = styled.div`
   color: var(--black-main);
 `;
 
-const TaskItem = ({task}) => {
+const TaskItem = ({task, onClick}) => {
+  const [isChecked, setIsChecked] = useState(task.isDone);
+  
   return (
-    <div>
-      <HidedCheckBoxForLabel type='checkbox' id={'task' + task.id} checked={task.idDone}/>
+    <div onClick={() => onClick(task)}>
+      <HidedCheckBoxForLabel type='checkbox' id={'task' + task.id} checked={isChecked} onChange={()=>setIsChecked(!isChecked)}/>
       <label htmlFor={'task' + task.id}>
         <Stack row spacing={2}>
           <CheckBox className="check-box">
