@@ -6,6 +6,7 @@ import styled from "styled-components";
 import Text from "../Text/Text";
 import { useNavigate } from "react-router-dom";
 import Wrapping from "../Layout/Wrapping";
+import {useState} from "react";
 const TaskInput = styled.input`
   outline: 0;
   width: 100%;
@@ -20,8 +21,21 @@ const TaskInput = styled.input`
   }
 `;
 
-const AddPage = () => {
+const AddPage = ({data}) => {
   const nav = useNavigate();
+  const [title, setTitle] = useState('');
+  const [category, setCategory] = useState('');
+  
+  const addTaskOnClickHandler = () => {
+    if (title.trim()==="") {
+      console.log('태스크 제목을 입력해주세요');
+      return;
+    }
+    data.addTask(title,category);
+    setTitle('');
+    setCategory('');
+  }
+  
   return (
     <Wrapping top="55px">
       <Stack spacing={2}>
@@ -35,10 +49,10 @@ const AddPage = () => {
           <Typography type="title">새로운 태스크</Typography>
           <hr/>
         </Stack>
-        <Text size="14px" lineHeight="16.41px" weight="400"><TaskInput placeholder="태스크 제목을 입력하세요" /></Text>
-        <Text size="14px" lineHeight="16.41px" weight="400"><TaskInput placeholder="카테고리를 입력하세요" /></Text>
+        <Text size="14px" lineHeight="16.41px" weight="400"><TaskInput placeholder="태스크 제목을 입력하세요" onChange={(e)=>setTitle(e.target.value)} value={title}/></Text>
+        <Text size="14px" lineHeight="16.41px" weight="400"><TaskInput placeholder="카테고리를 입력하세요" onChange={(e)=>setCategory(e.target.value)} value={category}/></Text>
       </Stack>
-      <PrimaryButton fullWidth className="absolute-b"><Typography type="button">태스크 추가</Typography></PrimaryButton>
+      <PrimaryButton fullWidth className="absolute-b" onClick={addTaskOnClickHandler}><Typography type="button">태스크 추가</Typography></PrimaryButton>
     </Wrapping>
   );
 };
