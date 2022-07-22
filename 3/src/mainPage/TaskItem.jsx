@@ -1,5 +1,5 @@
-import Stack from "../Layout/Stack";
-import Text from "../Text/Text";
+import Stack from "../layout/Stack";
+import Text from "../text/Text";
 import styled from "styled-components";
 import Icon from "../Icons";
 import {useState} from "react";

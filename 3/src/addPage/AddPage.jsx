@@ -1,11 +1,11 @@
-import Stack from "../Layout/Stack";
-import {PrimaryButton, SecondaryButton} from "../Button/Button";
-import Typography from "../Text/Typography";
+import Stack from "../layout/Stack";
+import {PrimaryButton, SecondaryButton} from "../button/Button";
+import Typography from "../text/Typography";
 import Icon from "../Icons";
 import styled from "styled-components";
-import Text from "../Text/Text";
+import Text from "../text/Text";
 import { useNavigate } from "react-router-dom";
-import Wrapping from "../Layout/Wrapping";
+import Wrapping from "../layout/Wrapping";
 import {useState} from "react";
 const TaskInput = styled.input`
   outline: 0;

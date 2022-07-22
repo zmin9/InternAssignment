@@ -1,14 +1,14 @@
-import Text from "../Text/Text";
-import Stack from "../Layout/Stack";
-import Wrapping from "../Layout/Wrapping";
+import Text from "../text/Text";
+import Stack from "../layout/Stack";
+import Wrapping from "../layout/Wrapping";
 import TaskList from "./TaskList";
-import {PrimaryButton, SecondaryButton} from "../Button/Button";
-import Typography from "../Text/Typography";
+import {PrimaryButton, SecondaryButton} from "../button/Button";
+import Typography from "../text/Typography";
 import Icon from "../Icons";
 import { useNavigate } from "react-router-dom";
 import {useState} from "react";
-import Modal from "../Modal";
-import CustomCalendar from "../Calendar/CustomCalendar";
+import Modal from "../modal/Modal";
+import CustomCalendar from "../calendar/CustomCalendar";
 
 function MainPage ({data}) {
   const [isModalOpen, setIsModalOpen] = useState(false);
