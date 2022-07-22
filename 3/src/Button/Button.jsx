@@ -7,10 +7,19 @@ const BasicButton = styled.button`
   line-height: 0;
   
   transition: filter;
-  transition-duration: 0.15s;
+  transition-duration: 0.2s;
   
-  &:active{
+  
+  :hover{
     filter: brightness(0.95);
+    
+    :active {
+      filter: brightness(0.9);
+    }
+  }
+
+  :active {
+    filter: brightness(0.9);
   }
 `;
 

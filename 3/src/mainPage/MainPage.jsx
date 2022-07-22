@@ -4,8 +4,10 @@ import TaskList from "./TaskList";
 import {PrimaryButton, SecondaryButton} from "../Button/Button";
 import Typography from "../Text/Typography";
 import Icon from "../Icons";
+import { useNavigate } from "react-router-dom";
 
 function MainPage () {
+  const nav = useNavigate();
   const doingTaskList = [
     {id: 0, isDone: false, title:"월급 통장 만들기", category:"💰 은행"},
     {id: 1, isDone: false, title:"월세 내기", category:"💰 은행"},
@@ -35,7 +37,7 @@ function MainPage () {
       {/* 버튼들 */}
       <PrimaryButton
           round
-          onClick={()=>console.log('go to add page')}
+          onClick={()=>nav("/add")}
           className="fixed-rb">
         <Icon type="plus" size={24}/>
       </PrimaryButton>

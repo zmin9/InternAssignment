@@ -4,7 +4,7 @@ import Typography from "../Text/Typography";
 import Icon from "../Icons";
 import styled from "styled-components";
 import Text from "../Text/Text";
-
+import { useNavigate } from "react-router-dom";
 const TaskInput = styled.input`
   outline: 0;
   width: 100%;
@@ -20,13 +20,16 @@ const TaskInput = styled.input`
 `;
 
 const AddPage = () => {
+  const nav = useNavigate();
   return (
     <>
       <Stack spacing={2}>
-        <SecondaryButton small><Stack row alignCenter spacing={1}>
+        <SecondaryButton small onClick={()=>nav("/")}>
+          <Stack row alignCenter spacing={1}>
             <Icon type="back" size={24}/>
-            <Typography type="button">뒤로 가기</Typography>
-        </Stack></SecondaryButton>
+            <Typography type="button" >뒤로 가기</Typography>
+          </Stack>
+        </SecondaryButton>
         <Stack spacing={1}>
           <Typography type="title">새로운 태스크</Typography>
           <hr/>
