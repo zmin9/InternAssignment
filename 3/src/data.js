@@ -3,7 +3,7 @@ class Data {
     this._taskDataArr = JSON.parse(localStorage.getItem('tasks')) || [];
     this._selectedCategory = "전체";
   }
-  get taskDataArr() { return JSON.parse(JSON.stringify(this._taskDataArr)); }
+  get #taskDataArr() { return JSON.parse(JSON.stringify(this._taskDataArr)); }
   get selectedCategory() { return this._selectedCategory; }
   // set setSelectedCategory(category) { this._selectedCategory = category}
   
@@ -16,9 +16,11 @@ class Data {
   // }
   
   get filteredTaskArr() {
-    return this._selectedCategory === "전체" ?
-      this.taskDataArr :
-      this.taskDataArr.filter((task) => task.category === this.selectedCategory);
+    return this._selectedCategory === "전체" ? this.#taskDataArr
+      : this.#taskDataArr.filter((task) => task.category === this.selectedCategory);
+  }
+  selectedDateTaskArr(selectedDay) {
+    return this.#taskDataArr.filter((task) => selectedDay.toDateString() === task.date);
   }
   
   addTask(title, category){
@@ -55,7 +57,7 @@ class Data {
   //   this.#save();
   // }
   toggleChecking(task) {
-    const taskIdx = this.taskDataArr.map((task)=> task.id).indexOf(task.id);
+    const taskIdx = this.#taskDataArr.map((task)=> task.id).indexOf(task.id);
     this._taskDataArr[taskIdx] = {
       ...task,
       isDone: !task.isDone

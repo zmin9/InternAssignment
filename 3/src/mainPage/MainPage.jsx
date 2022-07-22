@@ -13,7 +13,7 @@ import CustomCalendar from "../Calendar/CustomCalendar";
 function MainPage ({data}) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [taskArr, setTaskArr] = useState(data.taskDataArr);
+  const [taskArr, setTaskArr] = useState(data.selectedDateTaskArr(selectedDate));
   const doingTaskArr = taskArr.filter((task)=>!task.isDone);
   const doneTaskArr = taskArr.filter((task)=>task.isDone);
   const nav = useNavigate();
@@ -25,12 +25,13 @@ function MainPage ({data}) {
   
   const taskItemOnClickHandler = (task) => {
     data.toggleChecking(task);
-    setTaskArr(data.taskDataArr);
+    setTaskArr(data.selectedDateTaskArr(selectedDate));
   };
   
   const closeModal = () => setIsModalOpen(false) ;
   const calendarOnChangeHandler = (date) => {
     setSelectedDate(date);
+    setTaskArr(data.selectedDateTaskArr(date));
     closeModal();
   }
   
