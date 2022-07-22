@@ -39,12 +39,15 @@ const CheckBox = styled.div`
   color: var(--black-main);
 `;
 
-const TaskItem = ({task, onClick}) => {
+const TaskItem = ({task, onClick, active}) => {
   const [isChecked, setIsChecked] = useState(task.isDone);
   
   return (
-    <div onClick={() => onClick(task)}>
-      <HidedCheckBoxForLabel type='checkbox' id={'task' + task.id} checked={isChecked} onChange={()=>setIsChecked(!isChecked)}/>
+    <div onClick={active ? () => onClick(task) : null}>
+      <HidedCheckBoxForLabel
+          type='checkbox' id={'task' + task.id} checked={isChecked}
+          onChange={()=>setIsChecked(active? !isChecked : task.isDone)}
+      />
       <label htmlFor={'task' + task.id}>
         <Stack row spacing={2}>
           <CheckBox className="check-box">

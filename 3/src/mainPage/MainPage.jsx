@@ -59,8 +59,18 @@ function MainPage ({data}) {
           </Stack>
           <hr/>
           <Stack spacing={4}>
-            <TaskList title={doingTaskListTitle} tasks={doingTaskArr} onClick={taskItemOnClickHandler}/>
-            <TaskList title="완료됨" tasks={doneTaskArr} onClick={taskItemOnClickHandler}/>
+            <TaskList
+              title={doingTaskListTitle}
+              tasks={doingTaskArr}
+              onClick={taskItemOnClickHandler}
+              active={isToday(selectedDate)}
+            />
+            <TaskList
+              title="완료됨"
+              tasks={doneTaskArr}
+              onClick={taskItemOnClickHandler}
+              active={isToday(selectedDate)}
+            />
           </Stack>
         </Stack>
         {isToday(new Date())

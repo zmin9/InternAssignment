@@ -9,7 +9,7 @@ const EmptyListMsg = styled.div`
   text-align: center;
 `;
 
-const TaskList = ({title, tasks, onClick}) => {
+const TaskList = ({title, tasks, onClick, active}) => {
   return (
     <Stack spacing={2}>
       <Typography type="subtitle"> {title} </Typography>
@@ -18,7 +18,7 @@ const TaskList = ({title, tasks, onClick}) => {
           <EmptyListMsg><Text size="15px" color="var(--black-light)">항목이 없습니다.</Text></EmptyListMsg>
           :
           tasks.map((task) =>
-            <TaskItem key={task.id} task={task} onClick={onClick}/>
+            <TaskItem key={task.id} task={task} onClick={onClick} active={active}/>
           )
       }
     </Stack>
