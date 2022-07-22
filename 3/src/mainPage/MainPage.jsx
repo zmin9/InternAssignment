@@ -18,7 +18,7 @@ function MainPage ({data}) {
   const doneTaskArr = taskArr.filter((task)=>task.isDone);
   const nav = useNavigate();
   const isToday = (date) => {
-    return selectedDate.toDateString() === date.toDateString();
+    return new Date().toDateString() === date.toDateString();
   }
   
   const doingTaskListTitle = isToday(selectedDate)? "진행중" : "완료하지 못함";
@@ -55,7 +55,7 @@ function MainPage ({data}) {
               </Typography></h1>
               <SecondaryButton round small onClick={()=>setIsModalOpen(true)}><Icon type="more" size={24}/></SecondaryButton>
             </Stack>
-            <Text size="14px" weight="600" color="var(--black-main)">{doingTaskArr.length}개 진행중, {doneTaskArr.length}개 완료됨</Text>
+            <Text size="14px" weight="600" color="var(--black-main)">{doingTaskArr.length}개 {doingTaskListTitle}, {doneTaskArr.length}개 완료됨</Text>
           </Stack>
           <hr/>
           <Stack spacing={4}>
