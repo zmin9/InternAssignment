@@ -3,7 +3,7 @@ import styled from "styled-components";
 const StackContainer = styled.div`
   display: flex;
   flex-direction: ${props => props.row? "row" : "column"};
-  align-items: ${props => props.alignCenter? "center" : null};
+  align-items: ${props => props.alignCenter && "center"};
 `;
 
 const StackItem = styled.div`
