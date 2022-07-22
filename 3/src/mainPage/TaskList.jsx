@@ -1,5 +1,5 @@
 import TaskItem from "./TaskItem";
-import Stack from "../Stack/Stack";
+import Stack from "../Layout/Stack";
 import Typography from "../Text/Typography";
 
 const TaskList = ({title, tasks}) => {

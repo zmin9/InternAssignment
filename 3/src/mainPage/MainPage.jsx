@@ -1,5 +1,6 @@
 import Text from "../Text/Text";
-import Stack from "../Stack/Stack";
+import Stack from "../Layout/Stack";
+import Wrapping from "../Layout/Wrapping";
 import TaskList from "./TaskList";
 import {PrimaryButton, SecondaryButton} from "../Button/Button";
 import Typography from "../Text/Typography";
@@ -19,7 +20,7 @@ function MainPage () {
   ];
   
   return (
-    <>
+    <Wrapping top="76px">
       <Stack spacing={2}>
         <Stack spacing={1}>
           <Stack row spacing={1}>
@@ -41,7 +42,7 @@ function MainPage () {
           className="fixed-rb">
         <Icon type="plus" size={24}/>
       </PrimaryButton>
-    </>
+    </Wrapping>
   );
 }
 

@@ -1,4 +1,4 @@
-import Stack from "../Stack/Stack";
+import Stack from "../Layout/Stack";
 import Text from "../Text/Text";
 import styled from "styled-components";
 import Icon from "../Icons";

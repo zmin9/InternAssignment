@@ -1,10 +1,11 @@
-import Stack from "../Stack/Stack";
+import Stack from "../Layout/Stack";
 import {PrimaryButton, SecondaryButton} from "../Button/Button";
 import Typography from "../Text/Typography";
 import Icon from "../Icons";
 import styled from "styled-components";
 import Text from "../Text/Text";
 import { useNavigate } from "react-router-dom";
+import Wrapping from "../Layout/Wrapping";
 const TaskInput = styled.input`
   outline: 0;
   width: 100%;
@@ -22,7 +23,7 @@ const TaskInput = styled.input`
 const AddPage = () => {
   const nav = useNavigate();
   return (
-    <>
+    <Wrapping top="55px">
       <Stack spacing={2}>
         <SecondaryButton small onClick={()=>nav("/")}>
           <Stack row alignCenter spacing={1}>
@@ -38,7 +39,7 @@ const AddPage = () => {
         <Text size="14px" lineHeight="16.41px" weight="400"><TaskInput placeholder="카테고리를 입력하세요" /></Text>
       </Stack>
       <PrimaryButton fullWidth className="absolute-b"><Typography type="button">태스크 추가</Typography></PrimaryButton>
-    </>
+    </Wrapping>
   );
 };
 
