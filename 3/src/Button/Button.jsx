@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const BasicButton = styled.button`
-  width: ${props => props.fullWidth? "100%" : null };
+  width: ${props => props.fullWidth && "calc(100% - 32px)"};
   padding: ${props => props.small? "var(--spacing-1)" : "var(--spacing-2)"};
   border-radius: ${props => props.round? "9999px" : "4px" };
   line-height: 0;
