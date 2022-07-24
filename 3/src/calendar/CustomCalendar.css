@@ -55,3 +55,12 @@ abbr { text-decoration: none; }
     color: var(--black-light);
 }
 
+.mark {
+    height: 4px;
+    width: 4px;
+    background-color: var(--main-color);
+    position: absolute;
+    transform: translate(calc((100vw - 110px) / 7 / 2 - 2px), 0px);
+    border-radius: 50%;
+}
+

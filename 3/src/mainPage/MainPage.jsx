@@ -41,7 +41,10 @@ function MainPage ({data}) {
           <Modal
               background
               onClick={closeModal}>
-            <CustomCalendar onChange={calendarOnChangeHandler} value={selectedDate}/>
+            <CustomCalendar
+              data={data}
+              onChange={calendarOnChangeHandler}
+              value={selectedDate}/>
           </Modal>
       }
       <Wrapping top="76px">
