@@ -30,7 +30,7 @@ function AddPage ({data}) {
           <Icon type="back" size={24}/>
         </IconButton>
         <Stack spacing={1}>
-          <Typography type="title">새로운 태스크</Typography>
+          <Typography type="title" tag="h1">새로운 태스크</Typography>
           <hr/>
         </Stack>
         <TextInput placeholder="태스크 제목을 입력하세요" onChange={setTitle} value={title} />

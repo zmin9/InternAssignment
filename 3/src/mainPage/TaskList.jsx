@@ -12,7 +12,7 @@ const EmptyListMsg = styled.div`
 const TaskList = ({title, tasks, onClick, active}) => {
   return (
     <Stack spacing={2}>
-      <Typography type="subtitle"> {title} </Typography>
+      <Typography type="section-title" tag="h3"> {title} </Typography>
       {
         tasks.length === 0 ?
           <EmptyListMsg><Text size="15px" color="var(--black-light)">항목이 없습니다.</Text></EmptyListMsg>

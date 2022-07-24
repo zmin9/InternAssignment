@@ -50,9 +50,9 @@ function MainPage ({data}) {
         <Stack spacing={2}>
           <Stack spacing={1}>
             <Stack row spacing={1}>
-              <h1><Typography type="title">
+              <Typography type="title" tag="h1">
                 {selectedDate.getFullYear()}년 {selectedDate.getMonth() + 1}월 {selectedDate.getDate()}일
-              </Typography></h1>
+              </Typography>
               <IconButton
                 round
                 type="secondary"
@@ -62,7 +62,9 @@ function MainPage ({data}) {
                 <Icon type="more" size={24}/>
               </IconButton>
             </Stack>
-            <Text size="14px" weight="600" color="var(--black-main)">{doingTaskArr.length}개 {doingTaskListTitle}, {doneTaskArr.length}개 완료됨</Text>
+            <Typography type='subtitle' tag="h2">
+              {doingTaskArr.length}개 {doingTaskListTitle}, {doneTaskArr.length}개 완료됨
+            </Typography>
           </Stack>
           <hr/>
           <Stack spacing={4}>
