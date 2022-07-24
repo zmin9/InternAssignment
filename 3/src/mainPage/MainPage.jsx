@@ -1,4 +1,3 @@
-import Text from "../text/Text";
 import Stack from "../layout/Stack";
 import Wrapping from "../layout/Wrapping";
 import TaskList from "./TaskList";
@@ -7,7 +6,7 @@ import Typography from "../text/Typography";
 import Icon from "../Icons";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import Modal from "../modal/Modal";
+import Modal from "../popup/Modal";
 import CustomCalendar from "../calendar/CustomCalendar";
 
 function MainPage ({data}) {
@@ -41,7 +40,6 @@ function MainPage ({data}) {
         isModalOpen &&
           <Modal
               background
-              verticalAlign="center"
               onClick={closeModal}>
             <CustomCalendar onChange={calendarOnChangeHandler} value={selectedDate}/>
           </Modal>

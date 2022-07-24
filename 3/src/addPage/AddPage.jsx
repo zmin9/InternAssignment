@@ -4,24 +4,43 @@ import Typography from "../text/Typography";
 import Icon from "../Icons";
 import { useNavigate } from "react-router-dom";
 import Wrapping from "../layout/Wrapping";
-import { useState } from "react";
+import {useRef, useState} from "react";
 import TextInput from "../textInput/TextInput";
+import ToastMessage from "../popup/ToastMessage";
 
 
 function AddPage ({data}) {
   const nav = useNavigate();
+  const ref = useRef();
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState('');
+  const [isToastPopped, setIsToastPopped] = useState(false);
+  const [toastContent, setToastContent] = useState({});
+  
+  const showToastMessage = () => {
+    if (title.trim() === "") {
+      setToastContent({
+        type: "error",
+        text: "제목을 입력해주세요"
+      })
+    } else {
+      setToastContent({
+        text: "테스크가 추가되었습니다."
+      });
+    }
+    setIsToastPopped(true);
+  };
+  
   
   const addTaskOnClickHandler = () => {
-    if (title.trim()==="") {
-      console.log('태스크 제목을 입력해주세요');
-      return;
+    ref.current.focus();
+    showToastMessage();
+    if (title.trim() !== "") {
+      data.addTask(title, category);
+      setTitle('');
+      setCategory('');
     }
-    data.addTask(title,category);
-    setTitle('');
-    setCategory('');
-  }
+  };
   
   return (
     <Wrapping top="55px">
@@ -33,10 +52,17 @@ function AddPage ({data}) {
           <Typography type="title" tag="h1">새로운 태스크</Typography>
           <hr/>
         </Stack>
-        <TextInput placeholder="태스크 제목을 입력하세요" onChange={setTitle} value={title} />
+        <TextInput placeholder="태스크 제목을 입력하세요" onChange={setTitle} value={title} ref={ref}/>
         <TextInput placeholder="카테고리를 입력하세요" onChange={setCategory} value={category} />
       </Stack>
       <Button fullWidth position="absoluteB" onClick={addTaskOnClickHandler}>태스크 추가</Button>
+      {isToastPopped
+        && <ToastMessage
+              type={toastContent.type}
+              setToastState={setIsToastPopped}>
+            {toastContent.text}
+          </ToastMessage>
+      }
     </Wrapping>
   );
 }

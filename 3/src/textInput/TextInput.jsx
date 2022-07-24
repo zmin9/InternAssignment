@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Text from "../text/Text";
+import React from "react";
 
 const BasicTextInput = styled.input`
   outline: 0;
@@ -15,11 +16,11 @@ const BasicTextInput = styled.input`
   }
 `;
 
-const TextInput = ({placeholder, onChange, value}) =>
+const TextInput = React.forwardRef(({placeholder, onChange, value}, ref) =>
   <Text size="14px" lineHeight="16.41px" weight="400">
-    <BasicTextInput placeholder={placeholder} onChange={(e)=>onChange(e.target.value)} value={value}/>
+    <BasicTextInput placeholder={placeholder} onChange={(e)=>onChange(e.target.value)} value={value} ref={ref}/>
   </Text>
-;
+);
 
 
 export default TextInput;
