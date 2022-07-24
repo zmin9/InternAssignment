@@ -11,7 +11,7 @@ const BasicButton = styled.button`
   background-color: var(--button-bg-color, var(--main-color));
   color: var(--button-color, var(--bg-main-color));
   padding: var(--button-padding, var(--spacing-2));
-  width: ${props => props.fullWidth && "calc(100% - 32px)"};
+  width: ${props => props.fullWidth && "calc(100% - 2 * var(--spacing-2))"};
   border-radius: ${props => props.round? "9999px" : "4px" };
   line-height: 0;
   

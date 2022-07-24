@@ -14,12 +14,14 @@ const TaskList = ({title, tasks, onClick, active}) => {
     <Stack spacing={2}>
       <Typography type="section-title" tag="h3"> {title} </Typography>
       {
-        tasks.length === 0 ?
-          <EmptyListMsg><Text size="15px" color="var(--black-light)">항목이 없습니다.</Text></EmptyListMsg>
-          :
+        tasks.length !== 0 ?
           tasks.map((task) =>
             <TaskItem key={task.id} task={task} onClick={onClick} active={active}/>
           )
+          :
+          <EmptyListMsg>
+            <Text size="15px" color="var(--black-light)">항목이 없습니다.</Text>
+          </EmptyListMsg>
       }
     </Stack>
   );
