@@ -4,7 +4,7 @@ import Typography from "../text/Typography";
 import Icon from "../Icons";
 import { useNavigate } from "react-router-dom";
 import Wrapping from "../layout/Wrapping";
-import {useRef, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import TextInput from "../textInput/TextInput";
 import ToastMessage from "../popup/ToastMessage";
 
@@ -14,23 +14,37 @@ function AddPage ({data}) {
   const ref = useRef();
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState('');
-  const [isToastPopped, setIsToastPopped] = useState(false);
+  const [isToastPopped1, setIsToastPopped1] = useState(false);
+  const [isToastPopped2, setIsToastPopped2] = useState(false);
   const [toastContent, setToastContent] = useState({});
+  let time;
+  useEffect(()=>{
+    return clearTimeout(time);
+  }, []);
   
-  const showToastMessage = () => {
+  const getToastMessageContent = () => {
     if (title.trim() === "") {
-      setToastContent({
+      return {
         type: "error",
         text: "제목을 입력해주세요"
-      })
-    } else {
-      setToastContent({
-        text: "테스크가 추가되었습니다."
-      });
+      };
     }
-    setIsToastPopped(true);
+    else {
+      return {
+        text: "테스크가 추가되었습니다."
+      };
+    }
   };
   
+  const showToastMessage = () => {
+    setToastContent(getToastMessageContent());
+    if (!isToastPopped1 && !isToastPopped2){
+      setIsToastPopped1(true);
+    }
+    else
+      setIsToastPopped1(isToastPopped2);
+      setIsToastPopped2(isToastPopped1);
+  };
   
   const addTaskOnClickHandler = () => {
     ref.current.focus();
@@ -56,12 +70,19 @@ function AddPage ({data}) {
         <TextInput placeholder="카테고리를 입력하세요" onChange={setCategory} value={category} />
       </Stack>
       <Button fullWidth position="absoluteB" onClick={addTaskOnClickHandler}>태스크 추가</Button>
-      {isToastPopped
+      {isToastPopped1
         && <ToastMessage
               type={toastContent.type}
-              setToastState={setIsToastPopped}>
+              setToastState={setIsToastPopped1}>
             {toastContent.text}
           </ToastMessage>
+      }
+      {isToastPopped2
+        && <ToastMessage
+          type={toastContent.type}
+          setToastState={setIsToastPopped2}>
+          {toastContent.text}
+        </ToastMessage>
       }
     </Wrapping>
   );

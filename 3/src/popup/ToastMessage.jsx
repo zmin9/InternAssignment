@@ -34,10 +34,10 @@ const ToastMessage = ({children, type, setToastState}) => {
       setTransitionPos(null);
       const time = setTimeout(() => {
         setTransitionPos(unmountStyle);
-      }, 2000);
+      }, 2500);
       const unmountTime = setTimeout(() => {
         setToastState(false);
-      }, 2400);
+      }, 2900);
       
       return (() => {
         clearTimeout(time);
