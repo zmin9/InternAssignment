@@ -1,12 +1,13 @@
 import Stack from "../layout/Stack";
-import {PrimaryButton, SecondaryButton} from "../button/Button";
+import { Button, IconButton } from "../button/Button";
 import Typography from "../text/Typography";
 import Icon from "../Icons";
 import styled from "styled-components";
 import Text from "../text/Text";
 import { useNavigate } from "react-router-dom";
 import Wrapping from "../layout/Wrapping";
-import {useState} from "react";
+import { useState } from "react";
+
 const TaskInput = styled.input`
   outline: 0;
   width: 100%;
@@ -39,12 +40,9 @@ function AddPage ({data}) {
   return (
     <Wrapping top="55px">
       <Stack spacing={2}>
-        <SecondaryButton small onClick={()=>nav("/")}>
-          <Stack row alignCenter spacing={1}>
-            <Icon type="back" size={24}/>
-            <Typography type="button" >뒤로 가기</Typography>
-          </Stack>
-        </SecondaryButton>
+        <IconButton type="secondary" size="md" label="뒤로가기" onClick={() => nav("/")}>
+          <Icon type="back" size={24}/>
+        </IconButton>
         <Stack spacing={1}>
           <Typography type="title">새로운 태스크</Typography>
           <hr/>
@@ -52,7 +50,7 @@ function AddPage ({data}) {
         <Text size="14px" lineHeight="16.41px" weight="400"><TaskInput placeholder="태스크 제목을 입력하세요" onChange={(e)=>setTitle(e.target.value)} value={title}/></Text>
         <Text size="14px" lineHeight="16.41px" weight="400"><TaskInput placeholder="카테고리를 입력하세요" onChange={(e)=>setCategory(e.target.value)} value={category}/></Text>
       </Stack>
-      <PrimaryButton fullWidth className="absolute-b" onClick={addTaskOnClickHandler}><Typography type="button">태스크 추가</Typography></PrimaryButton>
+      <Button fullWidth position="absoluteB" onClick={addTaskOnClickHandler}>태스크 추가</Button>
     </Wrapping>
   );
 }

@@ -2,11 +2,11 @@ import Text from "../text/Text";
 import Stack from "../layout/Stack";
 import Wrapping from "../layout/Wrapping";
 import TaskList from "./TaskList";
-import {PrimaryButton, SecondaryButton} from "../button/Button";
+import { IconButton } from "../button/Button";
 import Typography from "../text/Typography";
 import Icon from "../Icons";
 import { useNavigate } from "react-router-dom";
-import {useState} from "react";
+import { useState } from "react";
 import Modal from "../modal/Modal";
 import CustomCalendar from "../calendar/CustomCalendar";
 
@@ -53,7 +53,14 @@ function MainPage ({data}) {
               <h1><Typography type="title">
                 {selectedDate.getFullYear()}년 {selectedDate.getMonth() + 1}월 {selectedDate.getDate()}일
               </Typography></h1>
-              <SecondaryButton round small onClick={()=>setIsModalOpen(true)}><Icon type="more" size={24}/></SecondaryButton>
+              <IconButton
+                round
+                type="secondary"
+                size="md"
+                onClick={() => setIsModalOpen(true)}
+              >
+                <Icon type="more" size={24}/>
+              </IconButton>
             </Stack>
             <Text size="14px" weight="600" color="var(--black-main)">{doingTaskArr.length}개 {doingTaskListTitle}, {doneTaskArr.length}개 완료됨</Text>
           </Stack>
@@ -74,12 +81,14 @@ function MainPage ({data}) {
           </Stack>
         </Stack>
         {isToday(new Date())
-          && <PrimaryButton
-                round
-                onClick={()=>nav("/add")}
-                className="fixed-rb">
-               <Icon type="plus" size={24}/>
-            </PrimaryButton>
+          &&
+          <IconButton
+            round
+            position="fixedRB"
+            onClick={()=>nav("/add")}
+          >
+            <Icon type="plus" size={24}/>
+          </IconButton>
         }
       </Wrapping>
     </>
