@@ -3,7 +3,7 @@ import Typography from "../text/Typography";
 import Stack from "../layout/Stack";
 
 const BasicButton = styled.button`
-  ${props => props.buttonType}
+  ${props => props.buttonStyle}
   ${props => props.buttonSize}
   ${props => props.buttonPosition}
 
@@ -33,7 +33,7 @@ const buttonSize = {
   `,
 }
 
-const buttonType = {
+const buttonStyleByType = {
   // default: primary
   secondary: css`
     --button-bg-color: var(--bg-main-color);
@@ -58,9 +58,19 @@ const buttonPosition = {
   `
 };
 
+const selectedChipStyle = css`
+  --button-bg-color: rgba(18, 148, 242, 0.15);
+  --button-color: var(--main-color);
+`;
+
+const defaultChipStyle = css`
+  --button-bg-color: var(--bg-sub-color);
+  --button-color: var(--black-main);
+`;
+
 const Button = ({children, type, size, position, ...props}) =>
   <BasicButton
-    buttonType={buttonType[type]}
+    buttonStyle={buttonStyleByType[type]}
     buttonSize={buttonSize[size]}
     buttonPosition={buttonPosition[position]}
     {...props}
@@ -73,7 +83,7 @@ const Button = ({children, type, size, position, ...props}) =>
 
 const IconButton = ({children, type, size, position, label,...props}) =>
   <BasicButton
-    buttonType={buttonType[type]}
+    buttonStyle={buttonStyleByType[type]}
     buttonSize={buttonSize[size]}
     buttonPosition={buttonPosition[position]}
     {...props}
@@ -89,5 +99,12 @@ const IconButton = ({children, type, size, position, label,...props}) =>
   </BasicButton>
 ;
 
+const Chip = ({children, selected, color, ...props}) =>
+  <BasicButton
+    buttonStyle={selected? selectedChipStyle : defaultChipStyle} size="md" {...props}>
+    {children}
+  </BasicButton>
+;
 
-export { Button, IconButton };
+
+export { Button, IconButton, Chip };
