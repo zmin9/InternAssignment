@@ -50,7 +50,7 @@ function AddPage ({data}) {
     ref.current.focus();
     showToastMessage();
     if (title.trim() !== "") {
-      data.addTask(title, category);
+      data.addTask(title.trim(), category.trim());
       setTitle('');
       setCategory('');
     }
