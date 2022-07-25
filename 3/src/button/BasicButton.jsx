@@ -6,7 +6,7 @@ const BasicButton = styled.button`
   ${props => props.buttonPosition}
 
   border: var(--button-border, 0);
-  background-color: var(--button-bg-color, var(--main-color));
+  background-color: var(--button-bg-color, var(--main-color-50));
   color: var(--button-color, var(--bg-main-color));
   padding: var(--button-padding, var(--spacing-2));
   width: ${props => props.fullWidth && "calc(100% - 2 * var(--spacing-2))"};

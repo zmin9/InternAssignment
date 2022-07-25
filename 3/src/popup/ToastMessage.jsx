@@ -6,7 +6,7 @@ import Text from "../text/Text";
 const ToastMessageCard = styled(Card)`
   ${props => props.messageColor};
   ${props => props.transitionPos};
-  box-shadow: rgba(var(--toast-shadow-color, 0, 0, 3), 0.3) 0 0 8px ;
+  box-shadow: var(--toast-shadow-color, var(--black-light)) 0 0 8px ;
   color: var(--toast-color, var(--black-main));
   
   transition: 0.4s;
@@ -14,8 +14,8 @@ const ToastMessageCard = styled(Card)`
 
 const messageColorByType = {
   error: css`
-    --toast-shadow-color: var(--destructive-color);
-    --toast-color: rgba(var(--destructive-color), 1);
+    --toast-shadow-color: var(--destructive-color-45);
+    --toast-color: var(--destructive-color-50);
   `,
 }
 

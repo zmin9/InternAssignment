@@ -18,12 +18,12 @@ const buttonStyleByType = {
   // default: primary
   secondary: css`
     --button-bg-color: var(--bg-main-color);
-    --button-color: var(--main-color);
+    --button-color: var(--main-color-50);
   `,
   outline: css`
-    --button-border: solid 2px var(--main-color);
+    --button-border: solid 2px var(--main-color-50);
     --button-bg-color: var(--bg-main-color);
-    --button-color: var(--main-color);
+    --button-color: var(--main-color-50);
   `,
 };
 

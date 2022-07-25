@@ -3,8 +3,8 @@ import BasicButton from "./BasicButton";
 import Text from "../text/Text";
 
 const selectedChipStyle = css`
-  --button-bg-color: rgba(18, 148, 242, 0.15);
-  --button-color: var(--main-color);
+  --button-bg-color: var(--main-color-90);
+  --button-color: var(--main-color-50);
 `;
 
 const defaultChipStyle = css`

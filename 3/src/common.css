@@ -7,10 +7,17 @@
     --black-main: #575767;
     --black-light: #B9B9BE;
 
-    --main-color: #1294F2;
-    --destructive-color: 219, 40, 40;
-    --bg-main-color: #F8F8F8;
-    --bg-sub-color: rgba(0, 0, 0, 0.06);
+    --main-colorHS: 205, 90%;
+    --main-color-50: hsl(var(--main-colorHS), 50%);
+    --main-color-90: hsl(var(--main-colorHS), 90%);
+
+    --destructive-colorHS: 5, 85%;
+    --destructive-color-50: hsl(var(--destructive-colorHS), 50%);
+    --destructive-color-45: hsl(var(--destructive-colorHS), 45%);
+
+    --bg-main-colorHS: 0, 0%;
+    --bg-main-color: hsl(var(--bg-main-colorHS), 97%);
+    --bg-sub-color: hsla(var(--bg-main-colorHS), 0%, 0.06);
 
     --spacing-0: 4px;
     --spacing-1: 8px;
