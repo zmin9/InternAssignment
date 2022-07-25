@@ -7,6 +7,7 @@ const StackContainer = styled.div`
 `;
 
 const StackItem = styled.div`
+  flex-shrink: 0;
   margin: ${props => props.row ?
           `0 0 0 var(--spacing-${props.spacing})` : `var(--spacing-${props.spacing}) 0 0 0`
   };

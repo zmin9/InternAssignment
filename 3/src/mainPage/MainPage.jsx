@@ -5,26 +5,37 @@ import { IconButton } from "../button/Button";
 import Typography from "../text/Typography";
 import Icon from "../Icons";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import Modal from "../popup/Modal";
 import CustomCalendar from "../calendar/CustomCalendar";
+import CategoryList from "../CategoryContainer";
 
 function MainPage ({data}) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [taskArr, setTaskArr] = useState(data.selectedDateTaskArr(selectedDate));
+  const [selectedCategory, setSelectedCategory] = useState("전체");
+  const [taskArr, setTaskArr] = useState(data.filteredByCategoryAndDateTaskArr(selectedDate, selectedCategory));
   const doingTaskArr = taskArr.filter((task)=>!task.isDone);
   const doneTaskArr = taskArr.filter((task)=>task.isDone);
   const nav = useNavigate();
   const isToday = (date) => {
     return new Date().toDateString() === date.toDateString();
   }
+  const updateTaskArr = () =>
+    setTaskArr(data.filteredByCategoryAndDateTaskArr(selectedDate, selectedCategory));
+  
+  useEffect(() => {
+    updateTaskArr();
+  }, [selectedCategory])
+  useEffect(() => {
+    setSelectedCategory('전체');
+  }, [selectedDate])
   
   const doingTaskListTitle = isToday(selectedDate)? "진행중" : "완료하지 못함";
   
   const taskItemOnClickHandler = (task) => {
     data.toggleChecking(task);
-    setTaskArr(data.selectedDateTaskArr(selectedDate));
+    updateTaskArr();
   };
   
   const closeModal = () => setIsModalOpen(false) ;
@@ -58,14 +69,17 @@ function MainPage ({data}) {
                 round
                 type="secondary"
                 size="md"
-                onClick={() => setIsModalOpen(true)}
-              >
+                onClick={() => setIsModalOpen(true)}>
                 <Icon type="more" size={24}/>
               </IconButton>
             </Stack>
             <Typography type='subtitle' tag="h2">
               {doingTaskArr.length}개 {doingTaskListTitle}, {doneTaskArr.length}개 완료됨
             </Typography>
+            <CategoryList
+              selectedCategory={selectedCategory}
+              onClick={setSelectedCategory}
+              categoryArr={['전체', ...data.categoryStrAtSelectedDateArr(selectedDate)]}/>
           </Stack>
           <hr/>
           <Stack spacing={4}>
@@ -73,14 +87,12 @@ function MainPage ({data}) {
               title={doingTaskListTitle}
               tasks={doingTaskArr}
               onClick={taskItemOnClickHandler}
-              active={isToday(selectedDate)}
-            />
+              active={isToday(selectedDate)} />
             <TaskList
               title="완료됨"
               tasks={doneTaskArr}
               onClick={taskItemOnClickHandler}
-              active={isToday(selectedDate)}
-            />
+              active={isToday(selectedDate)} />
           </Stack>
         </Stack>
         {isToday(new Date())
@@ -88,8 +100,7 @@ function MainPage ({data}) {
           <IconButton
             round
             position="fixedRB"
-            onClick={()=>nav("/add")}
-          >
+            onClick={()=>nav("/add")}>
             <Icon type="plus" size={24}/>
           </IconButton>
         }

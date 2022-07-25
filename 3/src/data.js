@@ -1,24 +1,30 @@
 class Data {
   constructor() {
     this._taskDataArr = JSON.parse(localStorage.getItem('tasks')) || [];
-    this._selectedCategory = "전체";
   }
   get #taskDataArr() { return JSON.parse(JSON.stringify(this._taskDataArr)); }
-  get selectedCategory() { return this._selectedCategory; }
-  get filteredTaskArr() {
-    return this._selectedCategory === "전체" ? this.#taskDataArr
-      : this.#taskDataArr.filter((task) => task.category === this.selectedCategory);
-  }
   get dateHavingScheduleStringArr() {
-    return this.#taskDataArr.map((task) => task.date)
-      .reduce((result, date) => {
-        if (result.includes(date)) return result;
-        else return [...result, date];
-      }, []);
+    return this.#getValueArrWithoutDuplicate('date');
   }
   
-  selectedDateTaskArr(selectedDay) {
-    return this.#taskDataArr.filter((task) => selectedDay.toDateString() === task.date);
+  categoryStrAtSelectedDateArr(selectedDate) {
+    return this.#getValueArrWithoutDuplicate(
+      'category',
+      this.selectedDateTaskArr(selectedDate)
+    );
+  }
+  filteredByCategoryAndDateTaskArr(selectedDate, selectedCategory) {
+    return selectedCategory === "전체" ?
+      this.selectedDateTaskArr(selectedDate)
+      :
+      this.selectedDateTaskArr(selectedDate).filter((task) =>
+        task.category === selectedCategory
+      );
+  }
+  selectedDateTaskArr(selectedDate) {
+    return this.#taskDataArr.filter((task) =>
+      selectedDate.toDateString() === task.date
+    );
   }
   addTask(title, category){
     this._taskDataArr.push({
@@ -41,9 +47,14 @@ class Data {
   #save(){
     localStorage.setItem('tasks', JSON.stringify(this._taskDataArr));
   }
-  // clear() {
-  //   localStorage.setItem('tasks',"[]");
-  // }
+  
+  #getValueArrWithoutDuplicate(value, arr = this.#taskDataArr){
+    return arr.map((task) => task[value])
+      .reduce((result, value) => {
+        if (result.includes(value)) return result;
+        else return [...result, value];
+      }, []);
+  }
 }
 
 export default Data;
