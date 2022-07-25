@@ -7,6 +7,7 @@ import Wrapping from "../layout/Wrapping";
 import {useEffect, useRef, useState} from "react";
 import TextInput from "../textInput/TextInput";
 import ToastMessage from "../popup/ToastMessage";
+import CategoryList from "../CategoryList";
 
 
 function AddPage ({data}) {
@@ -14,6 +15,7 @@ function AddPage ({data}) {
   const ref = useRef();
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('+');
   const [isToastPopped1, setIsToastPopped1] = useState(false);
   const [isToastPopped2, setIsToastPopped2] = useState(false);
   const [toastContent, setToastContent] = useState({});
@@ -35,7 +37,13 @@ function AddPage ({data}) {
       };
     }
   };
-  
+  const onClickCategoryChip = (category) => {
+    setSelectedCategory(category);
+    category === "+"?
+      setCategory('')
+      :
+      setCategory(category)
+  }
   const showToastMessage = () => {
     setToastContent(getToastMessageContent());
     if (!isToastPopped1 && !isToastPopped2){
@@ -53,6 +61,7 @@ function AddPage ({data}) {
       data.addTask(title.trim(), category.trim());
       setTitle('');
       setCategory('');
+      setSelectedCategory('+');
     }
   };
   
@@ -66,8 +75,20 @@ function AddPage ({data}) {
           <Typography type="title" tag="h1">새로운 태스크</Typography>
           <hr/>
         </Stack>
-        <TextInput placeholder="태스크 제목을 입력하세요" onChange={setTitle} value={title} ref={ref}/>
-        <TextInput placeholder="카테고리를 입력하세요" onChange={setCategory} value={category} />
+        <TextInput
+          placeholder="태스크 제목을 입력하세요"
+          onChange={setTitle}
+          value={title} ref={ref}/>
+        <TextInput
+          placeholder="카테고리를 입력하세요"
+          onChange={setCategory}
+          value={category}
+          disabled={selectedCategory !== '+'}/>
+        <CategoryList
+          selectedCategory={selectedCategory}
+          categoryArr={["+", ...data.allCategoryStrArr]}
+          onClick={onClickCategoryChip}
+        />
       </Stack>
       <Button fullWidth position="absoluteB" onClick={addTaskOnClickHandler}>태스크 추가</Button>
       {isToastPopped1

@@ -6,7 +6,12 @@ class Data {
   get dateHavingScheduleStringArr() {
     return this.#getValueArrWithoutDuplicate('date');
   }
-  
+  get allCategoryStrArr() {
+    return this.#getValueArrWithoutDuplicate(
+      'category',
+      this.#taskDataArr
+    );
+  }
   categoryStrAtSelectedDateArr(selectedDate) {
     return this.#getValueArrWithoutDuplicate(
       'category',

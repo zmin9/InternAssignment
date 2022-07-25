@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import {useEffect, useState} from "react";
 import Modal from "../popup/Modal";
 import CustomCalendar from "../calendar/CustomCalendar";
-import CategoryList from "../CategoryContainer";
+import CategoryList from "../CategoryList";
 
 function MainPage ({data}) {
   const [isModalOpen, setIsModalOpen] = useState(false);
