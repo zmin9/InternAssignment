@@ -4,7 +4,7 @@ import Typography from "../text/Typography";
 import Icon from "../Icons";
 import { useNavigate } from "react-router-dom";
 import Wrapping from "../layout/Wrapping";
-import {useEffect, useRef, useState} from "react";
+import { useRef, useState } from "react";
 import TextInput from "../textInput/TextInput";
 import ToastMessage from "../popup/ToastMessage";
 import CategoryList from "../CategoryList";
@@ -19,10 +19,6 @@ function AddPage ({data}) {
   const [isToastPopped1, setIsToastPopped1] = useState(false);
   const [isToastPopped2, setIsToastPopped2] = useState(false);
   const [toastContent, setToastContent] = useState({});
-  let time;
-  useEffect(()=>{
-    return clearTimeout(time);
-  }, []);
   
   const getToastMessageContent = () => {
     if (title.trim() === "") {

@@ -32,7 +32,7 @@ const ToastMessage = ({children, type, setToastState}) => {
   
   useEffect(() => {
       setTransitionPos(null);
-      const time = setTimeout(() => {
+      const mountTime = setTimeout(() => {
         setTransitionPos(unmountStyle);
       }, 2500);
       const unmountTime = setTimeout(() => {
@@ -40,7 +40,7 @@ const ToastMessage = ({children, type, setToastState}) => {
       }, 2900);
       
       return (() => {
-        clearTimeout(time);
+        clearTimeout(mountTime);
         clearTimeout(unmountTime);
       });
     }, []);
