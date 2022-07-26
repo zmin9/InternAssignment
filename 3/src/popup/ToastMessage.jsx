@@ -13,9 +13,13 @@ const ToastMessageCard = styled(Card)`
 `;
 
 const messageColorByType = {
+  success: css`
+    --toast-shadow-color: var(--main-color-90);
+    --toast-color: var(--main-color-50);
+  `,
   error: css`
-    --toast-shadow-color: var(--destructive-color-45);
-    --toast-color: var(--destructive-color-50);
+    --toast-shadow-color: var(--danger-color-90);
+    --toast-color: var(--danger-color-50);
   `,
 }
 
