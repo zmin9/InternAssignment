@@ -24,8 +24,8 @@ const cardPosition = {
 const BasicCard = styled.div`
   ${props => props.cardSize}
   ${props => props.cardPosition}
-  z-index: 2;
-  position: absolute;
+  z-index: 2; //X
+  position: absolute; //X
   inset: var(--card-inset, auto);
   left: var(--card-from-edge, 0);
   right: var(--card-from-edge, 0);

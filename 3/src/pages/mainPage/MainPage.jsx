@@ -14,23 +14,22 @@ import ScrollX from "../../component/container/Scroll";
 function MainPage ({data}) {
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [selectedCategory, setSelectedCategory] = useState("전체");
+  const [selectedCategory, setSelectedCategory] = useState("전체"); // 하드코딩 X
   const [taskArr, setTaskArr] = useState(data.filteredByCategoryAndDateTaskArr(selectedDate, selectedCategory));
   const doingTaskArr = taskArr.filter((task)=>!task.isDone);
   const doneTaskArr = taskArr.filter((task)=>task.isDone);
   const nav = useNavigate();
-  const isToday = (date) => {
-    return new Date().toDateString() === date.toDateString();
-  }
+  // date 관련해서는
+  const isToday = (date) => new Date().toDateString() === date.toDateString();
   const updateTaskArr = () =>
     setTaskArr(data.filteredByCategoryAndDateTaskArr(selectedDate, selectedCategory));
   
   useEffect(() => {
     updateTaskArr();
-  }, [selectedCategory])
+  }, [selectedCategory]);
   useEffect(() => {
-    setSelectedCategory('전체');
-  }, [selectedDate])
+    setSelectedCategory('전체');  // 하드코딩 X
+  }, [selectedDate]);
   
   const doingTaskListTitle = isToday(selectedDate)? "진행중" : "완료하지 못함";
   
@@ -50,13 +49,15 @@ function MainPage ({data}) {
     <>
       {
         isCalendarOpen &&
-          <Modal
+          <Modal  // 자체적으로 state를 관리하는 경우도 있음
               background
-              onClick={closeModal}>
+              onClick={closeModal}  // 이상함
+          >
             <CustomCalendar
               data={data}
               onChange={calendarOnChangeHandler}
-              value={selectedDate}/>
+              value={selectedDate}
+            />
           </Modal>
       }
       <Padding top="76px" side="var(--spacing-2)">

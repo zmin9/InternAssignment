@@ -1,7 +1,7 @@
 import Text from "./Text";
 import React from "react";
 
-const styleForType = {
+const styleByType = {
   'title': { size: "32px", weight: "700", color: "var(--black-dark)", lineHeight: "38.73px" },
   'subtitle': { size: "14px", weight: "600", color: "var(--black-main)" },
   'section-title': { size: "18px", weight: "700", color: "var(--black-main)" },
@@ -12,7 +12,7 @@ const Typography = ({children, type, tag}) =>
   React.createElement(
     tag || 'span',
     {},
-    <Text {...styleForType[type]}>{children}</Text>
+    <Text {...styleByType[type]}>{children}</Text>
   )
 ;
 

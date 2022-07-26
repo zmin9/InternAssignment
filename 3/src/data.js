@@ -12,6 +12,8 @@ class Data {
       this.#taskDataArr
     );
   }
+  
+  
   categoryStrAtSelectedDateArr(selectedDate) {
     return this.#getValueArrWithoutDuplicate(
       'category',
@@ -49,10 +51,11 @@ class Data {
     };
     this.#save();
   }
+  
+  
   #save(){
     localStorage.setItem('tasks', JSON.stringify(this._taskDataArr));
   }
-  
   #getValueArrWithoutDuplicate(value, arr = this.#taskDataArr){
     return arr.map((task) => task[value])
       .reduce((result, value) => {

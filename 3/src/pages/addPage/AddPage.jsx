@@ -14,8 +14,9 @@ import CategoryChips from "../../component/button/CategoryChips";
 function AddPage ({data}) {
   const nav = useNavigate();
   const ref = useRef();
-  const [title, setTitle] = useState('');
-  const [category, setCategory] = useState('');
+  const [title, setTitle] = useState(''); // debounce
+  const [category, setCategory] = useState(''); // debounce
+  // 그냥 한 번에 꺼내쓰는 방법도 있음 ref -> 가 불편해서 Formik, react-hook-form 라는 라이브러리도 있음
   const [selectedCategory, setSelectedCategory] = useState('+');
   const [isToastPopped1, setIsToastPopped1] = useState(false);
   const [isToastPopped2, setIsToastPopped2] = useState(false);
@@ -74,7 +75,7 @@ function AddPage ({data}) {
         <Stack spacing={1}>
           <Typography type="title" tag="h1">새로운 태스크</Typography>
           <hr/>
-        </Stack>
+        </Stack>  {/* form */}
         <TextInput
           placeholder="태스크 제목을 입력하세요"
           onChange={setTitle}
