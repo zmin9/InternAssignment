@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Card from "./Card";
+import Card from "../container/Card";
 
 
 const Background = styled.div`

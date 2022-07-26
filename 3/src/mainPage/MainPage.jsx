@@ -1,5 +1,5 @@
 import Stack from "../layout/Stack";
-import Wrapping from "../layout/Wrapping";
+import Wrapping from "../container/Wrapping";
 import TaskList from "./TaskList";
 import { IconButton } from "../button/Button";
 import Typography from "../text/Typography";
@@ -95,7 +95,7 @@ function MainPage ({data}) {
               active={isToday(selectedDate)} />
           </Stack>
         </Stack>
-        {isToday(new Date())
+        {isToday(selectedDate)
           &&
           <IconButton
             round

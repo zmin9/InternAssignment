@@ -1,5 +1,5 @@
 import styled, {css} from "styled-components";
-import Card from "./Card";
+import Card from "../container/Card";
 import {useEffect, useState} from "react";
 import Text from "../text/Text";
 

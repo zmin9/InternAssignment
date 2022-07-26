@@ -3,7 +3,7 @@ import { Button, IconButton } from "../button/Button";
 import Typography from "../text/Typography";
 import Icon from "../Icons";
 import { useNavigate } from "react-router-dom";
-import Wrapping from "../layout/Wrapping";
+import Wrapping from "../container/Wrapping";
 import { useRef, useState } from "react";
 import TextInput from "../textInput/TextInput";
 import ToastMessage from "../popup/ToastMessage";
