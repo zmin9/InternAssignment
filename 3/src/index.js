@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import './common.css';
-import MainPage from "./mainPage/MainPage";
-import AddPage from "./addPage/AddPage";
+import MainPage from "./pages/mainPage/MainPage";
+import AddPage from "./pages/addPage/AddPage";
 import Data from "./data";
 
 const data = new Data();
@@ -14,7 +14,6 @@ root.render(
     <Routes>
       <Route index element={<MainPage data={data} />} />
       <Route path="/add" element={<AddPage data={data} />} />
-      {/*<Route path="/ct" element={<ComponentTest />} />*/}
     </Routes>
   </BrowserRouter>
 );

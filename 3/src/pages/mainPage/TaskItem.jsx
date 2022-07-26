@@ -1,8 +1,8 @@
-import Stack from "../layout/Stack";
-import Text from "../text/Text";
 import styled from "styled-components";
-import Icon from "../Icons";
 import {useState} from "react";
+import Stack from "../../component/layout/Stack";
+import Text from "../../component/text/Text";
+import Icon from "../../component/Icons";
 
 const HidedCheckBoxForLabel = styled.input`
   display: none;

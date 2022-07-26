@@ -1,4 +1,4 @@
-import Chip from "./button/Chip";
+import Chip from "./Chip";
 
 const CategoryChips = ({selectedCategory, categoryArr, onClick}) => {
   const getShortCategory = (category) => category.length > 12? category.slice(0,10)+'⋯' : category;

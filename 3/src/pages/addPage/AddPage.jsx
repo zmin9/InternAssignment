@@ -1,14 +1,14 @@
-import Stack from "../layout/Stack";
-import { Button, IconButton } from "../button/Button";
-import Typography from "../text/Typography";
-import Icon from "../Icons";
-import { useNavigate } from "react-router-dom";
-import Wrapping from "../container/Wrapping";
 import { useRef, useState } from "react";
-import TextInput from "../textInput/TextInput";
-import ToastMessage from "../popup/ToastMessage";
-import Flex from "../layout/Flex";
-import CategoryChips from "../CategoryChips";
+import { useNavigate } from "react-router-dom";
+import Stack from "../../component/layout/Stack";
+import { Button, IconButton } from "../../component/button/Button";
+import Typography from "../../component/text/Typography";
+import Icon from "../../component/Icons";
+import Wrapping from "../../component/container/Wrapping";
+import TextInput from "../../component/textInput/TextInput";
+import ToastMessage from "../../component/popup/ToastMessage";
+import Flex from "../../component/layout/Flex";
+import CategoryChips from "../../component/button/CategoryChips";
 
 
 function AddPage ({data}) {

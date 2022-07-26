@@ -1,15 +1,15 @@
-import Stack from "../layout/Stack";
-import Wrapping from "../container/Wrapping";
-import TaskList from "./TaskList";
-import { IconButton } from "../button/Button";
-import Typography from "../text/Typography";
-import Icon from "../Icons";
-import { useNavigate } from "react-router-dom";
 import {useEffect, useState} from "react";
-import Modal from "../popup/Modal";
-import CustomCalendar from "../calendar/CustomCalendar";
-import CategoryChips from "../CategoryChips";
-import ScrollX from "../container/Scroll";
+import { useNavigate } from "react-router-dom";
+import TaskList from "./TaskList";
+import Stack from "../../component/layout/Stack";
+import Wrapping from "../../component/container/Wrapping";
+import { IconButton } from "../../component/button/Button";
+import Typography from "../../component/text/Typography";
+import Icon from "../../component/Icons";
+import Modal from "../../component/popup/Modal";
+import CustomCalendar from "../../component/calendar/CustomCalendar";
+import CategoryChips from "../../component/button/CategoryChips";
+import ScrollX from "../../component/container/Scroll";
 
 function MainPage ({data}) {
   const [isModalOpen, setIsModalOpen] = useState(false);

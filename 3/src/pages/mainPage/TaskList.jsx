@@ -1,8 +1,8 @@
-import TaskItem from "./TaskItem";
-import Stack from "../layout/Stack";
-import Typography from "../text/Typography";
 import styled from "styled-components";
-import Text from "../text/Text";
+import TaskItem from "./TaskItem";
+import Stack from "../../component/layout/Stack";
+import Typography from "../../component/text/Typography";
+import Text from "../../component/text/Text";
 
 const EmptyListMsg = styled.div`
   padding: var(--spacing-2);
