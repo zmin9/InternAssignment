@@ -4,7 +4,7 @@ import Stack from "../../component/layout/Stack";
 import { Button, IconButton } from "../../component/button/Button";
 import Typography from "../../component/text/Typography";
 import Icon from "../../component/Icons";
-import Wrapping from "../../component/container/Wrapping";
+import Padding from "../../component/container/Padding";
 import TextInput from "../../component/textInput/TextInput";
 import ToastMessage from "../../component/popup/ToastMessage";
 import Flex from "../../component/layout/Flex";
@@ -64,11 +64,13 @@ function AddPage ({data}) {
   };
   
   return (
-    <Wrapping top="55px">
-      <Stack spacing={2}>
+    <Padding top="55px" side="var(--spacing-2)">
+      <Padding bottom="var(--spacing-1)">
         <IconButton type="secondary" size="md" label="뒤로가기" onClick={() => nav("/")}>
           <Icon type="back" size={24}/>
         </IconButton>
+      </Padding>
+      <Stack spacing={2}>
         <Stack spacing={1}>
           <Typography type="title" tag="h1">새로운 태스크</Typography>
           <hr/>
@@ -105,7 +107,7 @@ function AddPage ({data}) {
           {toastContent.text}
         </ToastMessage>
       }
-    </Wrapping>
+    </Padding>
   );
 }
 

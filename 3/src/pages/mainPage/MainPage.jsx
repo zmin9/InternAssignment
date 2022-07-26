@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import { useNavigate } from "react-router-dom";
 import TaskList from "./TaskList";
 import Stack from "../../component/layout/Stack";
-import Wrapping from "../../component/container/Wrapping";
+import Padding from "../../component/container/Padding";
 import { IconButton } from "../../component/button/Button";
 import Typography from "../../component/text/Typography";
 import Icon from "../../component/Icons";
@@ -12,7 +12,7 @@ import CategoryChips from "../../component/button/CategoryChips";
 import ScrollX from "../../component/container/Scroll";
 
 function MainPage ({data}) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isCalendarOpen, setIsCalendarOpen] = useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedCategory, setSelectedCategory] = useState("전체");
   const [taskArr, setTaskArr] = useState(data.filteredByCategoryAndDateTaskArr(selectedDate, selectedCategory));
@@ -39,7 +39,7 @@ function MainPage ({data}) {
     updateTaskArr();
   };
   
-  const closeModal = () => setIsModalOpen(false) ;
+  const closeModal = () => setIsCalendarOpen(false) ;
   const calendarOnChangeHandler = (date) => {
     setSelectedDate(date);
     setTaskArr(data.selectedDateTaskArr(date));
@@ -49,7 +49,7 @@ function MainPage ({data}) {
   return (
     <>
       {
-        isModalOpen &&
+        isCalendarOpen &&
           <Modal
               background
               onClick={closeModal}>
@@ -59,7 +59,7 @@ function MainPage ({data}) {
               value={selectedDate}/>
           </Modal>
       }
-      <Wrapping top="76px">
+      <Padding top="76px" side="var(--spacing-2)">
         <Stack spacing={2}>
           <Stack spacing={1}>
             <Stack row spacing={1}>
@@ -70,7 +70,7 @@ function MainPage ({data}) {
                 round
                 type="secondary"
                 size="md"
-                onClick={() => setIsModalOpen(true)}>
+                onClick={() => setIsCalendarOpen(true)}>
                 <Icon type="more" size={24}/>
               </IconButton>
             </Stack>
@@ -78,7 +78,7 @@ function MainPage ({data}) {
               {doingTaskArr.length}개 {doingTaskListTitle}, {doneTaskArr.length}개 완료됨
             </Typography>
             <ScrollX>
-              <Stack row spacing={0}>
+              <Stack row spacing={1}>
                 <CategoryChips
                   selectedCategory={selectedCategory}
                   onClick={setSelectedCategory}
@@ -109,7 +109,7 @@ function MainPage ({data}) {
             <Icon type="plus" size={24}/>
           </IconButton>
         }
-      </Wrapping>
+      </Padding>
     </>
   );
 }
