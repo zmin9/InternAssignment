@@ -8,7 +8,8 @@ import { useNavigate } from "react-router-dom";
 import {useEffect, useState} from "react";
 import Modal from "../popup/Modal";
 import CustomCalendar from "../calendar/CustomCalendar";
-import CategoryList from "../CategoryList";
+import CategoryChips from "../CategoryChips";
+import ScrollX from "../container/Scroll";
 
 function MainPage ({data}) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -76,10 +77,14 @@ function MainPage ({data}) {
             <Typography type='subtitle' tag="h2">
               {doingTaskArr.length}개 {doingTaskListTitle}, {doneTaskArr.length}개 완료됨
             </Typography>
-            <CategoryList
-              selectedCategory={selectedCategory}
-              onClick={setSelectedCategory}
-              categoryArr={['전체', ...data.categoryStrAtSelectedDateArr(selectedDate)]}/>
+            <ScrollX>
+              <Stack row spacing={0}>
+                <CategoryChips
+                  selectedCategory={selectedCategory}
+                  onClick={setSelectedCategory}
+                  categoryArr={['전체', ...data.categoryStrAtSelectedDateArr(selectedDate)]}/>
+              </Stack>
+            </ScrollX>
           </Stack>
           <hr/>
           <Stack spacing={4}>

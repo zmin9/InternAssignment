@@ -7,7 +7,8 @@ import Wrapping from "../container/Wrapping";
 import { useRef, useState } from "react";
 import TextInput from "../textInput/TextInput";
 import ToastMessage from "../popup/ToastMessage";
-import CategoryList from "../CategoryList";
+import Flex from "../layout/Flex";
+import CategoryChips from "../CategoryChips";
 
 
 function AddPage ({data}) {
@@ -29,6 +30,7 @@ function AddPage ({data}) {
     }
     else {
       return {
+        type: "success",
         text: "테스크가 추가되었습니다."
       };
     }
@@ -80,11 +82,13 @@ function AddPage ({data}) {
           onChange={setCategory}
           value={category}
           disabled={selectedCategory !== '+'}/>
-        <CategoryList
-          selectedCategory={selectedCategory}
-          categoryArr={["+", ...data.allCategoryStrArr]}
-          onClick={onClickCategoryChip}
-        />
+        <Flex gap={1}>
+          <CategoryChips
+            selectedCategory={selectedCategory}
+            categoryArr={["+", ...data.allCategoryStrArr]}
+            onClick={onClickCategoryChip}
+          />
+        </Flex>
       </Stack>
       <Button fullWidth position="absoluteB" onClick={addTaskOnClickHandler}>태스크 추가</Button>
       {isToastPopped1

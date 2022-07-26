@@ -1,20 +1,9 @@
 import styled from "styled-components";
+import Flex from "./Flex";
 
-const StackContainer = styled.div`
-  display: flex;
+const StackContainer = styled(Flex)`
   flex-direction: ${props => props.row? "row" : "column"};
   align-items: ${props => props.alignCenter && "center"};
-`;
-
-const StackItem = styled.div`
-  flex-shrink: 0;
-  margin: ${props => props.row ?
-          `0 0 0 var(--spacing-${props.spacing})` : `var(--spacing-${props.spacing}) 0 0 0`
-  };
-
-  &:first-child {
-    margin: 0;
-  }
 `;
 
 const Stack = ({children, spacing, row, alignCenter}) => {
@@ -23,13 +12,9 @@ const Stack = ({children, spacing, row, alignCenter}) => {
     return typeof obj[Symbol.iterator] === "function";
   }
   return (
-    <StackContainer row={row} alignCenter={alignCenter}>
+    <StackContainer row={row} alignCenter={alignCenter} gap={spacing} nowrap>
       { checkIterable(children)?
-          children.flat().map((child, idx) =>
-            <StackItem key={idx} spacing={spacing} row={row}>
-              {child}
-            </StackItem>
-          )
+          children.flat().map((child) => child)
         :
         children
       }
