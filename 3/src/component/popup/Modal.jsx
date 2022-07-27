@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import Card from "../container/Card";
+import styled from 'styled-components';
+import Card from '../container/Card';
 
 
 const Background = styled.div`
@@ -10,13 +10,11 @@ const Background = styled.div`
   background-color: rgba(0, 0, 0, 0.7);
 `;
 
-const Modal = ({children, background, onClick}) => {
-  return (
-    <>
-      <Background background={background} onClick={onClick}/>
-      <Card size='lg' position='center'>{children}</Card>
-    </>
-  );
-};
+const Modal = ({children, background, onClick}) => (
+	<>
+		<Background background={background} onClick={onClick}/>
+		<Card size='lg' position='center'>{children}</Card>
+	</>
+);
 
 export default Modal;

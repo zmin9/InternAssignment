@@ -1,25 +1,25 @@
-import styled, {css} from "styled-components";
+import styled, {css} from 'styled-components';
 
 const cardSize = {
-  lg: css`
+	lg: css`
     --card-from-edge: 36px;
   `,
-  sm : css`
+	sm : css`
     --card-from-edge: 60px;
   `
 };
 
 const cardPosition = {
-  top: css`
+	top: css`
     --card-inset: 15% auto auto;
   `,
-  center: css`
+	center: css`
     --card-inset: calc(50% - 320px / 2) auto auto;
   `,
-  bottom: css`
+	bottom: css`
     --card-inset: auto auto 15%;
   `,
-}
+};
 
 const BasicCard = styled.div`
   ${props => props.cardSize}
@@ -36,13 +36,13 @@ const BasicCard = styled.div`
 `;
 
 const Card = ({children, size, position, ...props}) =>
-  <BasicCard
-    cardSize={cardSize[size]}
-    cardPosition={cardPosition[position]}
-    {...props}
-  >
-    {children}
-  </BasicCard>
+	<BasicCard
+		cardSize={cardSize[size]}
+		cardPosition={cardPosition[position]}
+		{...props}
+	>
+		{children}
+	</BasicCard>
 ;
 
 export default Card;

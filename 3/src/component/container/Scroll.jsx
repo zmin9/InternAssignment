@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const ScrollX = styled.div`
-  overflow-x: auto;
+	overflow-x: auto;
   &::-webkit-scrollbar{
     display: none;
   }

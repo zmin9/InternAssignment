@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 import {DateManager} from './dateManager';
 
-const defaultCategory = "전체";
+const defaultCategory = '전체';
 
 export const useTaskData = () => {
 	const [taskDataArr, setTaskDataArr] = useState(JSON.parse(localStorage.getItem('tasks')) || []);
@@ -27,24 +27,20 @@ export const useTaskData = () => {
 		newArr[indexAtTaskDataArr].isDone = !newArr[indexAtTaskDataArr].isDone;
 		setTaskDataArr(newArr);
 	};
-	const getCategoryArrByDate = ( date ) => {
-		return taskDataArr
-			.filter(task => DateManager.isSameDay(task.date ,date)) // 수정 필요
-			.map(task => task.category)
-			.reduce((result, category) => {
-				if (result.includes(category)) return result;
-				else return [...result, category];
-			}, []);
-		}
+	const getCategoryArrByDate = ( date ) => taskDataArr
+		.filter(task => DateManager.isSameDay(task.date ,date)) // 수정 필요
+		.map(task => task.category)
+		.reduce((result, category) => {
+			if (result.includes(category)) return result;
+			return [...result, category];
+		}, [])
 	;
-	const getCategoryArr = () => {
-		return taskDataArr
-			.map(task => task.category)
-			.reduce((result, category) => {
-				if (result.includes(category)) return result;
-				else return [...result, category];
-			}, [])
-	};
+	const getCategoryArr = () => taskDataArr
+		.map(task => task.category)
+		.reduce((result, category) => {
+			if (result.includes(category)) return result;
+			return [...result, category];
+		}, []);
 	
 	const getTaskArrOnDateByCategory = ( date, category ) => {
 		if (category === defaultCategory) return taskDataArr.filter(task => DateManager.isSameDay(task.date ,date));
@@ -54,9 +50,7 @@ export const useTaskData = () => {
 			.filter(task => task.category === category);
 	};
 	
-	const checkWhetherTasksIsOn = ( date ) => {
-		return taskDataArr.some(task => DateManager.isSameDay(task.date, date));
-	}
+	const checkWhetherTasksIsOn = ( date ) => taskDataArr.some(task => DateManager.isSameDay(task.date, date));
 	
 	useEffect(() => {
 		localStorage.setItem('tasks', JSON.stringify(taskDataArr));

@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import Text from "../text/Text";
-import React from "react";
+import React from 'react';
+import styled from 'styled-components';
+import Text from '../text/Text';
 
 const BasicTextInput = styled.input`
   outline: 0;
@@ -17,13 +17,13 @@ const BasicTextInput = styled.input`
 `;
 
 const TextInput = React.forwardRef(({placeholder, disabled}, ref) =>
-  <Text size="14px" lineHeight="16.41px" weight="400">
-    <BasicTextInput
-      placeholder={placeholder}
-      ref={ref}
-      disabled={disabled}
-    />
-  </Text>
+	<Text size="14px" lineHeight="16.41px" weight="400">
+		<BasicTextInput
+			placeholder={placeholder}
+			ref={ref}
+			disabled={disabled}
+		/>
+	</Text>
 );
 
 

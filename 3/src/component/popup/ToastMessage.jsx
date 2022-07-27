@@ -1,7 +1,7 @@
-import styled, {css} from "styled-components";
-import Card from "../container/Card";
-import {useEffect, useState} from "react";
-import Text from "../text/Text";
+import styled, {css} from 'styled-components';
+import {useEffect, useState} from 'react';
+import Card from '../container/Card';
+import Text from '../text/Text';
 
 const ToastMessageCard = styled(Card)`
   ${props => props.messageColor};
@@ -13,15 +13,15 @@ const ToastMessageCard = styled(Card)`
 `;
 
 const messageColorByType = {
-  success: css`
+	success: css`
     --toast-shadow-color: var(--main-color-90);
     --toast-color: var(--main-color-50);
   `,
-  error: css`
+	error: css`
     --toast-shadow-color: var(--danger-color-90);
     --toast-color: var(--danger-color-50);
   `,
-}
+};
 
 const mountStyle = css`
   transform: translateY(20px);
@@ -31,29 +31,34 @@ const unmountStyle = css`
   opacity: 0;
 `;
 
-const ToastMessage = ({children, type, setToastState}) => {
-  const [transitionPos, setTransitionPos] = useState(mountStyle);
-  
-  useEffect(() => {
-      setTransitionPos(null);
-      const mountTime = setTimeout(() => {
-        setTransitionPos(unmountStyle);
-      }, 2500);
-      const unmountTime = setTimeout(() => {
-        setToastState(false);
-      }, 2900);
-      
-      return (() => {
-        clearTimeout(mountTime);
-        clearTimeout(unmountTime);
-      });
-    }, []);
-  
-  return (
-    <ToastMessageCard size="sm" position="bottom" messageColor={messageColorByType[type]} transitionPos={transitionPos}>
-      <Text size="14px">{children}</Text>
-    </ToastMessageCard>
-  );
+const ToastMessage = ({ children, type, setToastState }) => {
+	const [transitionPos, setTransitionPos] = useState(mountStyle);
+
+	useEffect(() => {
+		setTransitionPos(null);
+		const mountTime = setTimeout(() => {
+			setTransitionPos(unmountStyle);
+		}, 2500);
+		const unmountTime = setTimeout(() => {
+			setToastState(false);
+		}, 2900);
+
+		return () => {
+			clearTimeout(mountTime);
+			clearTimeout(unmountTime);
+		};
+	}, []);
+
+	return (
+		<ToastMessageCard
+			size="sm"
+			position="bottom"
+			messageColor={messageColorByType[type]}
+			transitionPos={transitionPos}
+		>
+			<Text size="14px">{children}</Text>
+		</ToastMessageCard>
+	);
 };
 
 
