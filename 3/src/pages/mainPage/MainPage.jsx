@@ -19,7 +19,7 @@ function MainPage () {
   const defaultCategory = '전체';
   
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
-  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState(DateManager.getTodayDate);
   const [selectedCategory, setSelectedCategory] = useState(defaultCategory); // 하드코딩 X
   const [taskArr, setTaskArr] = useState(data.getTaskArrOnDateByCategory(selectedDate, selectedCategory));
   const doingTaskArr = taskArr.filter((task)=>!task.isDone);
