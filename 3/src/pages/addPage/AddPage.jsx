@@ -9,9 +9,11 @@ import TextInput from "../../component/textInput/TextInput";
 import ToastMessage from "../../component/popup/ToastMessage";
 import Flex from "../../component/layout/Flex";
 import CategoryChips from "../../component/button/CategoryChips";
+import {useTaskData} from '../../useTaskData';
 
 
-function AddPage ({data}) {
+function AddPage () {
+  const data = useTaskData();
   const nav = useNavigate();
   const ref = useRef();
   const [title, setTitle] = useState(''); // debounce
@@ -88,7 +90,7 @@ function AddPage ({data}) {
         <Flex gap={1}>
           <CategoryChips
             selectedCategory={selectedCategory}
-            categoryArr={["+", ...data.allCategoryStrArr]}
+            categoryArr={["+", ...data.getCategoryArr()]}
             onClick={onClickCategoryChip}
           />
         </Flex>

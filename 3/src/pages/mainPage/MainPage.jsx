@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import { useNavigate } from "react-router-dom";
 import TaskList from "./TaskList";
 import Stack from "../../component/layout/Stack";
@@ -10,33 +10,43 @@ import Modal from "../../component/popup/Modal";
 import CustomCalendar from "../../component/calendar/CustomCalendar";
 import CategoryChips from "../../component/button/CategoryChips";
 import ScrollX from "../../component/container/Scroll";
+import {useTaskData} from '../../useTaskData';
+import {DateManager} from '../../dateManager';
 
-function MainPage ({data}) {
+function MainPage () {
+  
+  const data = useTaskData();
+  const defaultCategory = '전체';
+  
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [selectedCategory, setSelectedCategory] = useState("전체"); // 하드코딩 X
-  const [taskArr, setTaskArr] = useState(data.filteredByCategoryAndDateTaskArr(selectedDate, selectedCategory));
+  const [selectedCategory, setSelectedCategory] = useState(defaultCategory); // 하드코딩 X
+  const [taskArr, setTaskArr] = useState(data.getTaskArrOnDateByCategory(selectedDate, selectedCategory));
   const doingTaskArr = taskArr.filter((task)=>!task.isDone);
   const doneTaskArr = taskArr.filter((task)=>task.isDone);
   const nav = useNavigate();
   const isToday = DateManager.isToday(selectedDate);
-  const updateTaskArr = () =>
-    setTaskArr(data.filteredByCategoryAndDateTaskArr(selectedDate, selectedCategory));
+  const updateTaskArr = (date, category) =>
+    setTaskArr(data.getTaskArrOnDateByCategory(date, category));
   
   const doingTaskListTitle = isToday? "진행중" : "완료하지 못함";
   
   const taskItemOnClickHandler = (task) => {
-    data.toggleChecking(task);
-    updateTaskArr();
+    data.toggleChecking(task.id);
+    updateTaskArr(selectedDate, selectedCategory);
   };
   
   const closeModal = () => setIsCalendarOpen(false) ;
   const calendarOnChangeHandler = (date) => {
     setSelectedDate(date);
-    setTaskArr(data.selectedDateTaskArr(date));
+    setSelectedCategory(defaultCategory);
+    setTaskArr(data.getTaskArrOnDateByCategory(date, defaultCategory));
     closeModal();
   }
-  
+  const categoryChipOnClickHandler = (category) => {
+    setSelectedCategory(category);
+    updateTaskArr(selectedDate, category);
+  };
   return (
     <>
       {
@@ -74,8 +84,8 @@ function MainPage ({data}) {
               <Stack row spacing={1}>
                 <CategoryChips
                   selectedCategory={selectedCategory}
-                  onClick={setSelectedCategory}
-                  categoryArr={['전체', ...data.categoryStrAtSelectedDateArr(selectedDate)]}/>
+                  onClick={categoryChipOnClickHandler}
+                  categoryArr={[defaultCategory, ...data.getCategoryArrByDate(selectedDate)]}/>
               </Stack>
             </ScrollX>
           </Stack>
@@ -93,7 +103,7 @@ function MainPage ({data}) {
               active={isToday} />
           </Stack>
         </Stack>
-        {isToday(selectedDate)
+        {isToday
           &&
           <IconButton
             round

@@ -2,15 +2,11 @@ import Calendar from "react-calendar";
 import './CustomCalendar.css';
 import Icon from "../Icons";
 import {DateManager} from '../../dateManager';
+import {useTaskData} from '../../useTaskData';
 
 
-const CustomCalendar = ({value, data, ...props}) => {
-  const isSameDate = (date1, date2) => {
-    return date1.toDateString()===date2.toDateString();
-  }
-  const isFutureDate = (date) => {
-    return Date.parse(new Date().toString()) < Date.parse(date);
-  }
+const CustomCalendar = ({value, ...props}) => {
+  const data = useTaskData();
   return (
     <Calendar
       {...props}
@@ -27,7 +23,7 @@ const CustomCalendar = ({value, data, ...props}) => {
                   : [];
       }}
       tileContent={({ date }) => {
-        if ( data.dateHavingScheduleStringArr.includes(date.toDateString()))
+        if ( data.checkWhetherTasksIsOn(date) )
           return <div className="mark"></div>
         return null;
       }}
