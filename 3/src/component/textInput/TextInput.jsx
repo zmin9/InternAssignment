@@ -16,12 +16,10 @@ const BasicTextInput = styled.input`
   }
 `;
 
-const TextInput = React.forwardRef(({placeholder, onChange, value, disabled}, ref) =>
+const TextInput = React.forwardRef(({placeholder, disabled}, ref) =>
   <Text size="14px" lineHeight="16.41px" weight="400">
     <BasicTextInput
       placeholder={placeholder}
-      onChange={(e)=>onChange(e.target.value)}
-      value={value}
       ref={ref}
       disabled={disabled}
     />

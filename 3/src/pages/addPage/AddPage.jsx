@@ -15,9 +15,10 @@ import {useTaskData} from '../../useTaskData';
 function AddPage () {
   const data = useTaskData();
   const nav = useNavigate();
-  const ref = useRef();
-  const [title, setTitle] = useState(''); // debounce
-  const [category, setCategory] = useState(''); // debounce
+  const titleRef = useRef();
+  const categoryRef = useRef();
+  // const [title, setTitle] = useState(''); // debounce
+  // const [category, setCategory] = useState(''); // debounce
   // 그냥 한 번에 꺼내쓰는 방법도 있음 ref -> 가 불편해서 Formik, react-hook-form 라는 라이브러리도 있음
   const [selectedCategory, setSelectedCategory] = useState('+');
   const [isToastPopped1, setIsToastPopped1] = useState(false);
@@ -25,7 +26,7 @@ function AddPage () {
   const [toastContent, setToastContent] = useState({});
   
   const getToastMessageContent = () => {
-    if (title.trim() === "") {
+    if (titleRef.current.value.trim() === "") {
       return {
         type: "error",
         text: "제목을 입력해주세요"
@@ -41,9 +42,9 @@ function AddPage () {
   const onClickCategoryChip = (category) => {
     setSelectedCategory(category);
     category === "+"?
-      setCategory('')
+      categoryRef.current.value = ''
       :
-      setCategory(category)
+      categoryRef.current.value = category
   }
   const showToastMessage = () => {
     setToastContent(getToastMessageContent());
@@ -56,12 +57,12 @@ function AddPage () {
   };
   
   const addTaskOnClickHandler = () => {
-    ref.current.focus();
+    titleRef.current.focus();
     showToastMessage();
-    if (title.trim() !== "") {
-      data.addTask(title.trim(), category.trim());
-      setTitle('');
-      setCategory('');
+    if (titleRef.current.value.trim() !== "") {
+      data.addTask(titleRef.current.value.trim(), categoryRef.current.value.trim());
+      titleRef.current.value = "";
+      categoryRef.current.value = "";
       setSelectedCategory('+');
     }
   };
@@ -80,13 +81,12 @@ function AddPage () {
         </Stack>  {/* form */}
         <TextInput
           placeholder="태스크 제목을 입력하세요"
-          onChange={setTitle}
-          value={title} ref={ref}/>
+          ref={titleRef}/>
         <TextInput
           placeholder="카테고리를 입력하세요"
-          onChange={setCategory}
-          value={category}
-          disabled={selectedCategory !== '+'}/>
+          disabled={selectedCategory !== '+'}
+          ref={categoryRef}
+        />
         <Flex gap={1}>
           <CategoryChips
             selectedCategory={selectedCategory}
