@@ -19,19 +19,11 @@ function MainPage ({data}) {
   const doingTaskArr = taskArr.filter((task)=>!task.isDone);
   const doneTaskArr = taskArr.filter((task)=>task.isDone);
   const nav = useNavigate();
-  // date 관련해서는
-  const isToday = (date) => new Date().toDateString() === date.toDateString();
+  const isToday = DateManager.isToday(selectedDate);
   const updateTaskArr = () =>
     setTaskArr(data.filteredByCategoryAndDateTaskArr(selectedDate, selectedCategory));
   
-  useEffect(() => {
-    updateTaskArr();
-  }, [selectedCategory]);
-  useEffect(() => {
-    setSelectedCategory('전체');  // 하드코딩 X
-  }, [selectedDate]);
-  
-  const doingTaskListTitle = isToday(selectedDate)? "진행중" : "완료하지 못함";
+  const doingTaskListTitle = isToday? "진행중" : "완료하지 못함";
   
   const taskItemOnClickHandler = (task) => {
     data.toggleChecking(task);
@@ -93,12 +85,12 @@ function MainPage ({data}) {
               title={doingTaskListTitle}
               tasks={doingTaskArr}
               onClick={taskItemOnClickHandler}
-              active={isToday(selectedDate)} />
+              active={isToday} />
             <TaskList
               title="완료됨"
               tasks={doneTaskArr}
               onClick={taskItemOnClickHandler}
-              active={isToday(selectedDate)} />
+              active={isToday} />
           </Stack>
         </Stack>
         {isToday(selectedDate)

@@ -1,6 +1,7 @@
 import Calendar from "react-calendar";
 import './CustomCalendar.css';
 import Icon from "../Icons";
+import {DateManager} from '../../dateManager';
 
 
 const CustomCalendar = ({value, data, ...props}) => {
@@ -19,10 +20,12 @@ const CustomCalendar = ({value, data, ...props}) => {
       navigationLabel={({ date }) => `${date.getFullYear()}년 ${date.getMonth() + 1}월`}
       nextLabel={<Icon type='calendar-right' size={24}/>}
       prevLabel={<Icon type='calendar-left' size={24}/>}
-      tileDisabled={({ date }) => isFutureDate(date)}
-      tileClassName={({ date }) => isSameDate(value, date) ? 'selected-date-tile'
-                                    : isFutureDate(date)? 'future-date-tile'
-                                      : []}
+      tileDisabled={({ date }) => DateManager.isFuture(date)}
+      tileClassName={({ date }) => {
+        return DateManager.isSameDay(value, date) ? 'selected-date-tile'
+                : DateManager.isFuture(date) ? 'future-date-tile'
+                  : [];
+      }}
       tileContent={({ date }) => {
         if ( data.dateHavingScheduleStringArr.includes(date.toDateString()))
           return <div className="mark"></div>
