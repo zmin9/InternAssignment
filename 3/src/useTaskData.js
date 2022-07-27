@@ -10,8 +10,8 @@ export const useTaskData = () => {
 		setTaskDataArr([
 			...taskDataArr,
 			{
-				'id': Date.now(),
-				'date': Date.now(),
+				'id': DateManager.getNow,
+				'date': DateManager.getNow,
 				'title': title,
 				'category': category,
 				'isDone': false
@@ -20,9 +20,9 @@ export const useTaskData = () => {
 	};
 	const toggleChecking = (taskId) => {
 		const indexAtTaskDataArr = taskDataArr.map(task => task.id).indexOf(taskId);
-		// if(indexAtTaskDataArr === -1) {
-		// 	throw Error('유효하지 않은 Task ID 입니다');
-		// }
+		if(indexAtTaskDataArr === -1) {
+			throw Error('유효하지 않은 Task ID 입니다');
+		}
 		const newArr = [...taskDataArr];
 		newArr[indexAtTaskDataArr].isDone = !newArr[indexAtTaskDataArr].isDone;
 		setTaskDataArr(newArr);
