@@ -1,9 +1,9 @@
-import {useEffect, useState} from 'react';
-import {DateManager} from './dateManager';
+import { useEffect, useState } from 'react';
+import DateManager from './dateManager';
 
 const defaultCategory = '전체';
 
-export const useTaskData = () => {
+const useTaskData = () => {
 	const [taskDataArr, setTaskDataArr] = useState(JSON.parse(localStorage.getItem('tasks')) || []);
 	
 	const addTask = (title, category) => {
@@ -65,3 +65,5 @@ export const useTaskData = () => {
 		checkWhetherTasksIsOn
 	};
 };
+
+export default useTaskData;

@@ -9,7 +9,7 @@ import TextInput from '../../component/textInput/TextInput';
 import ToastMessage from '../../component/popup/ToastMessage';
 import Flex from '../../component/layout/Flex';
 import CategoryChips from '../../component/button/CategoryChips';
-import {useTaskData} from '../../useTaskData';
+import useTaskData from '../../useTaskData';
 
 
 function AddPage () {
