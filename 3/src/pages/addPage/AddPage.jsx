@@ -7,7 +7,7 @@ import Icon from '../../component/Icons';
 import Padding from '../../component/container/Padding';
 import TextInput from '../../component/textInput/TextInput';
 import ToastMessage from '../../component/popup/ToastMessage';
-import CategoryChips from '../../component/button/CategoryChips';
+import CategoryChip from '../../component/button/CategoryChip';
 import useTaskData from '../../useTaskData';
 
 
@@ -78,12 +78,15 @@ function AddPage () {
 					disabled={selectedCategory !== '+'}
 					ref={categoryRef}
 				/>
-				<FlexBox gap={1} wrap>
-					<CategoryChips
-						selectedCategory={selectedCategory}
-						categoryArr={['+', ...data.getCategoryArr()]}
-						onClick={onClickCategoryChip}
-					/>
+				<FlexBox spacing={1} wrap row>
+					{['+', ...data.getCategoryArr()].map((category, idx) =>
+						<CategoryChip
+							key={idx}
+							category={category}
+							selectedCategory={selectedCategory}
+							onClick={onClickCategoryChip}
+						/>
+					)}
 				</FlexBox>
 			</FlexBox>
 			<Button fullWidth position="absoluteB" onClick={addTaskOnClickHandler}>태스크 추가</Button>

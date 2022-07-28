@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import TaskList from './TaskList';
 import Icon from '../../component/Icons';
 import { IconButton } from '../../component/button/Button';
-import CategoryChips from '../../component/button/CategoryChips';
+import CategoryChip from '../../component/button/CategoryChip';
 import CustomCalendar from '../../component/calendar/CustomCalendar';
 import Padding from '../../component/container/Padding';
 import ScrollX from '../../component/container/Scroll';
@@ -84,10 +84,14 @@ function MainPage() {
 						</Typography>
 						<ScrollX>
 							<FlexBox row spacing={1}>
-								<CategoryChips
-									selectedCategory={selectedCategory}
-									onClick={categoryChipOnClickHandler}
-									categoryArr={[defaultCategory, ...data.getCategoryArrByDate(selectedDate)]}/>
+								{[defaultCategory, ...data.getCategoryArrByDate(selectedDate)].map((category, idx) =>
+									<CategoryChip
+										key={idx}
+										category={category}
+										selectedCategory={selectedCategory}
+										onClick={categoryChipOnClickHandler}
+									/>
+								)}
 							</FlexBox>
 						</ScrollX>
 					</FlexBox>
