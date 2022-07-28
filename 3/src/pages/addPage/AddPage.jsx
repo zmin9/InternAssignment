@@ -1,13 +1,12 @@
 import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Stack from '../../component/layout/Stack';
+import FlexBox from '../../component/layout/FlexBox';
 import { Button, IconButton } from '../../component/button/Button';
 import Typography from '../../component/text/Typography';
 import Icon from '../../component/Icons';
 import Padding from '../../component/container/Padding';
 import TextInput from '../../component/textInput/TextInput';
 import ToastMessage from '../../component/popup/ToastMessage';
-import Flex from '../../component/layout/Flex';
 import CategoryChips from '../../component/button/CategoryChips';
 import useTaskData from '../../useTaskData';
 
@@ -36,10 +35,7 @@ function AddPage () {
 	};
 	const onClickCategoryChip = (category) => {
 		setSelectedCategory(category);
-		category === '+'?
-			categoryRef.current.value = ''
-			:
-			categoryRef.current.value = category;
+		categoryRef.current.value = category === '+'? '' : category;
 	};
 	const showToastMessage = () => {
 		setToastContent(getToastMessageContent());
@@ -69,11 +65,11 @@ function AddPage () {
 					<Icon type="back" size={24}/>
 				</IconButton>
 			</Padding>
-			<Stack spacing={2}>
-				<Stack spacing={1}>
+			<FlexBox spacing={2}>
+				<FlexBox spacing={1}>
 					<Typography type="title" tag="h1">새로운 태스크</Typography>
 					<hr/>
-				</Stack> {/* form */}
+				</FlexBox> {/* form */}
 				<TextInput
 					placeholder="태스크 제목을 입력하세요"
 					ref={titleRef}/>
@@ -82,14 +78,14 @@ function AddPage () {
 					disabled={selectedCategory !== '+'}
 					ref={categoryRef}
 				/>
-				<Flex gap={1}>
+				<FlexBox gap={1} wrap>
 					<CategoryChips
 						selectedCategory={selectedCategory}
 						categoryArr={['+', ...data.getCategoryArr()]}
 						onClick={onClickCategoryChip}
 					/>
-				</Flex>
-			</Stack>
+				</FlexBox>
+			</FlexBox>
 			<Button fullWidth position="absoluteB" onClick={addTaskOnClickHandler}>태스크 추가</Button>
 			{isToastPopped1
 				&& <ToastMessage

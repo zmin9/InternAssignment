@@ -7,7 +7,7 @@ import CategoryChips from '../../component/button/CategoryChips';
 import CustomCalendar from '../../component/calendar/CustomCalendar';
 import Padding from '../../component/container/Padding';
 import ScrollX from '../../component/container/Scroll';
-import Stack from '../../component/layout/Stack';
+import FlexBox from '../../component/layout/FlexBox';
 import Modal from '../../component/popup/Modal';
 import Typography from '../../component/text/Typography';
 import DateManager from '../../dateManager';
@@ -65,9 +65,9 @@ function MainPage() {
 				</Modal>
 			}
 			<Padding top="76px" side="var(--spacing-2)">
-				<Stack spacing={2}>
-					<Stack spacing={1}>
-						<Stack row spacing={1}>
+				<FlexBox spacing={2}>
+					<FlexBox spacing={1}>
+						<FlexBox row spacing={1}>
 							<Typography type="title" tag="h1">
 								{selectedDate.getFullYear()}년 {selectedDate.getMonth() + 1}월 {selectedDate.getDate()}일
 							</Typography>
@@ -78,21 +78,21 @@ function MainPage() {
 								onClick={() => setIsCalendarOpen(true)}>
 								<Icon type="more" size={24}/>
 							</IconButton>
-						</Stack>
+						</FlexBox>
 						<Typography type="subtitle" tag="h2">
 							{doingTaskArr.length}개 {doingTaskListTitle}, {doneTaskArr.length}개 완료됨
 						</Typography>
 						<ScrollX>
-							<Stack row spacing={1}>
+							<FlexBox row spacing={1}>
 								<CategoryChips
 									selectedCategory={selectedCategory}
 									onClick={categoryChipOnClickHandler}
 									categoryArr={[defaultCategory, ...data.getCategoryArrByDate(selectedDate)]}/>
-							</Stack>
+							</FlexBox>
 						</ScrollX>
-					</Stack>
+					</FlexBox>
 					<hr/>
-					<Stack spacing={4}>
+					<FlexBox spacing={4}>
 						<TaskList
 							title={doingTaskListTitle}
 							tasks={doingTaskArr}
@@ -103,8 +103,8 @@ function MainPage() {
 							tasks={doneTaskArr}
 							onClick={taskItemOnClickHandler}
 							active={isToday}/>
-					</Stack>
-				</Stack>
+					</FlexBox>
+				</FlexBox>
 				{isToday
 					&&
 					<IconButton
