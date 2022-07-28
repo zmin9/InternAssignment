@@ -28,7 +28,7 @@ const useTaskData = () => {
 		setTaskDataArr(newArr);
 	};
 	const getCategoryArrByDate = ( date ) => taskDataArr
-		.filter(task => DateManager.isSameDay(task.date ,date)) // 수정 필요
+		.filter(task => DateManager.isSameDay(task.date ,date))
 		.map(task => task.category)
 		.reduce((result, category) => {
 			if (result.includes(category)) return result;

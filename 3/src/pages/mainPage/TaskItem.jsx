@@ -6,8 +6,8 @@ import Icon from '../../component/Icons';
 
 const HidedCheckBoxForLabel = styled.input`
   display: none;
-
   & + label {
+		white-space: initial;
     .check-box {
       svg {
         visibility: hidden;
@@ -29,6 +29,7 @@ const HidedCheckBoxForLabel = styled.input`
     
   }
 `;
+
 const CheckBox = styled.div`
   width: 24px;
   height: 24px;
@@ -38,12 +39,13 @@ const CheckBox = styled.div`
   
   color: var(--black-main);
 `;
+const TaskInfo = styled.div`max-width: calc(100% - 40px);`;
 
 const TaskItem = ({ task, onClick, active }) => {
 	const [isChecked, setIsChecked] = useState(task.isDone);
  
 	return (
-		<div onClick={active ? () => onClick(task) : null}>
+		<div onClick={active ? () => onClick(task) : null} >
 			<HidedCheckBoxForLabel
 				type='checkbox' id={`task${task.id}`} checked={isChecked}
 				onChange={()=>setIsChecked(active? !isChecked : task.isDone)}
@@ -53,10 +55,12 @@ const TaskItem = ({ task, onClick, active }) => {
 					<CheckBox className="check-box">
 						<Icon type='check'/>
 					</CheckBox>
-					<FlexBox spacing={0}>
-						<Text className="title" size="14px" weight="500" color="var(--black-main)" lineHeight="24px">{task.title}</Text>
-						<Text className="category" size="14px" weight="600" color="var(--black-light)">{task.category}</Text>
-					</FlexBox>
+					<TaskInfo>
+						<FlexBox spacing={0}>
+							<Text className="title" size="14px" weight="500" color="var(--black-main)" lineHeight="24px">{task.title}</Text>
+							<Text className="category" size="14px" weight="600" color="var(--black-light)">{task.category}</Text>
+						</FlexBox>
+					</TaskInfo>
 				</FlexBox>
 			</label>
 		</div>
