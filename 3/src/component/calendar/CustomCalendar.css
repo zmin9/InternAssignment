@@ -38,16 +38,17 @@ button {
 
 .react-calendar__tile {
     color: var(--black-dark);
-    padding: 7px 0;
+    padding: calc(((100vw - 110px) / 7 - 22px) / 3) 0;
     font-weight: 500;
     font-size: 14px;
     line-height: 22px;
+    height: calc((100vw - 110px) / 7);
 }
 
 abbr { text-decoration: none; }
 
 .selected-date-tile {
-    border-radius: 8px;
+    border-radius: 50%;
     background-color: var(--main-color-50);
     color: var(--bg-main-color);
 }
@@ -60,7 +61,7 @@ abbr { text-decoration: none; }
     width: 4px;
     background-color: var(--main-color-50);
     position: absolute;
-    transform: translate(calc((100vw - 110px) / 7 / 2 - 2px), 0px);
+    transform: translate(calc((100vw - 110px) / 7 / 2 - 2px), -1px);
     border-radius: 50%;
 }
 
