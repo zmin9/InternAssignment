@@ -9,6 +9,7 @@ import ToastMessage from '../../component/popup/ToastMessage';
 import CategoryChip from '../../component/button/CategoryChip';
 import useTaskData from '../../useTaskData';
 import Text from '../../component/text/Text';
+import PositionFixed from '../../component/layout/PositionFixed';
 
 
 function AddPage () {
@@ -91,7 +92,9 @@ function AddPage () {
 					)}
 				</FlexBox>
 			</FlexBox>
-			<Button fullWidth position="absoluteB" onClick={addTaskOnClickHandler}>태스크 추가</Button>
+			<PositionFixed bottom="37px">
+				<Button fullWidth onClick={addTaskOnClickHandler}>태스크 추가</Button>
+			</PositionFixed>
 			{isToastPopped1
 				&& <ToastMessage
 					type={toastContent.type}

@@ -27,23 +27,10 @@ const buttonStyleByType = {
   `,
 };
 
-const buttonPosition = {
-	absoluteB: css`
-    position: absolute;
-    bottom: 40px;
-  `,
-	fixedRB: css`
-    position: fixed;
-    right: 16px;
-    bottom: 40px;
-  `
-};
-
-const Button = ({children, type, size, position, ...props}) =>
+const Button = ({children, type, size, ...props}) =>
 	<BasicButton
 		buttonStyle={buttonStyleByType[type]}
 		buttonSize={buttonSize[size]}
-		buttonPosition={buttonPosition[position]}
 		{...props}
 	>
 		<Text size='15px' weight='600' lineHeight='18.15px'>
@@ -52,11 +39,10 @@ const Button = ({children, type, size, position, ...props}) =>
 	</BasicButton>
 ;
 
-const IconButton = ({children, type, size, position, label,...props}) =>
+const IconButton = ({children, type, size, label,...props}) =>
 	<BasicButton
 		buttonStyle={buttonStyleByType[type]}
 		buttonSize={buttonSize[size]}
-		buttonPosition={buttonPosition[position]}
 		{...props}
 	>
 		{label?

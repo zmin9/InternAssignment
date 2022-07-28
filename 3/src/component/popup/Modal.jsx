@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 import Card from '../container/Card';
+import PositionFixed from '../layout/PositionFixed';
 
 
 const Background = styled.div`
-  z-index: 1;
-  position: fixed;
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.7);
@@ -12,8 +11,12 @@ const Background = styled.div`
 
 const Modal = ({children, background, onClick}) => (
 	<>
-		<Background background={background} onClick={onClick}/>
-		<Card size='lg' position='center'>{children}</Card>
+		<PositionFixed center>
+			<Background background={background} onClick={onClick}>hi</Background>
+		</PositionFixed>
+		<PositionFixed right="36px" left="36px" center>
+			<Card size='lg'>{children}</Card>
+		</PositionFixed>
 	</>
 );
 

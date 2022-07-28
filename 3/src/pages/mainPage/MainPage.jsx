@@ -12,6 +12,7 @@ import Modal from '../../component/popup/Modal';
 import DateManager from '../../dateManager';
 import useTaskData from '../../useTaskData';
 import Text from '../../component/text/Text';
+import PositionFixed from '../../component/layout/PositionFixed';
 
 
 
@@ -51,19 +52,6 @@ function MainPage() {
 	};
 	return (
 		<>
-			{
-				isCalendarOpen &&
-				<Modal  // 자체적으로 state를 관리하는 경우도 있음
-					background
-					onClick={closeModal}  // 이상함
-				>
-					<CustomCalendar
-						data={data}
-						onChange={calendarOnChangeHandler}
-						value={selectedDate}
-					/>
-				</Modal>
-			}
 			<Padding top="76px" side="var(--spacing-2)">
 				<FlexBox spacing={2}>
 					<FlexBox spacing={1}>
@@ -113,16 +101,30 @@ function MainPage() {
 							active={isToday}/>
 					</FlexBox>
 				</FlexBox>
-				{isToday
-					&&
-					<IconButton
-						round
-						position="fixedRB"
-						onClick={() => nav('/add')}>
-						<Icon type="plus" size={24}/>
-					</IconButton>
-				}
 			</Padding>
+			{isToday
+					&&
+					<PositionFixed right="16px" bottom="40px">
+						<IconButton
+							round
+							onClick={() => nav('/add')}>
+							<Icon type="plus" size={24}/>
+						</IconButton>
+					</PositionFixed>
+			}
+			{
+				isCalendarOpen &&
+				<Modal  // 자체적으로 state를 관리하는 경우도 있음
+					background
+					onClick={closeModal}  // 이상함
+				>
+					<CustomCalendar
+						data={data}
+						onChange={calendarOnChangeHandler}
+						value={selectedDate}
+					/>
+				</Modal>
+			}
 		</>
 	);
 }
