@@ -1,11 +1,11 @@
 import Calendar from 'react-calendar';
 import './CustomCalendar.css';
 import Icon from '../Icons';
-import {DateManager} from '../../dateManager';
-import {useTaskData} from '../../useTaskData';
+import DateManager from '../../dateManager';
+import useTaskData from '../../useTaskData';
 
 
-const CustomCalendar = ({value, ...props}) => {
+const CustomCalendar = ({ value, ...props }) => {
 	const data = useTaskData();
 	return (
 		<Calendar
