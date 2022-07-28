@@ -9,9 +9,9 @@ import Padding from '../../component/container/Padding';
 import ScrollX from '../../component/container/Scroll';
 import FlexBox from '../../component/layout/FlexBox';
 import Modal from '../../component/popup/Modal';
-import Typography from '../../component/text/Typography';
 import DateManager from '../../dateManager';
 import useTaskData from '../../useTaskData';
+import Text from '../../component/text/Text';
 
 
 
@@ -68,9 +68,11 @@ function MainPage() {
 				<FlexBox spacing={2}>
 					<FlexBox spacing={1}>
 						<FlexBox row spacing={1}>
-							<Typography type="title" tag="h1">
-								{selectedDate.getFullYear()}년 {selectedDate.getMonth() + 1}월 {selectedDate.getDate()}일
-							</Typography>
+							<h1>
+								<Text size='32px' weight='700' color='var(--black-dark)' lineHeight='38.73px'>
+									{selectedDate.getFullYear()}년 {selectedDate.getMonth() + 1}월 {selectedDate.getDate()}일
+								</Text>
+							</h1>
 							<IconButton
 								round
 								type="secondary"
@@ -79,9 +81,11 @@ function MainPage() {
 								<Icon type="more" size={24}/>
 							</IconButton>
 						</FlexBox>
-						<Typography type="subtitle" tag="h2">
-							{doingTaskArr.length}개 {doingTaskListTitle}, {doneTaskArr.length}개 완료됨
-						</Typography>
+						<h2>
+							<Text size='14px' weight='600' color='var(--black-main)'>
+								{doingTaskArr.length}개 {doingTaskListTitle}, {doneTaskArr.length}개 완료됨
+							</Text>
+						</h2>
 						<ScrollX>
 							<FlexBox row spacing={1}>
 								{[defaultCategory, ...data.getCategoryArrByDate(selectedDate)].map((category, idx) =>

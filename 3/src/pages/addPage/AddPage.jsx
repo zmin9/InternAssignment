@@ -2,13 +2,13 @@ import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import FlexBox from '../../component/layout/FlexBox';
 import { Button, IconButton } from '../../component/button/Button';
-import Typography from '../../component/text/Typography';
 import Icon from '../../component/Icons';
 import Padding from '../../component/container/Padding';
 import TextInput from '../../component/textInput/TextInput';
 import ToastMessage from '../../component/popup/ToastMessage';
 import CategoryChip from '../../component/button/CategoryChip';
 import useTaskData from '../../useTaskData';
+import Text from '../../component/text/Text';
 
 
 function AddPage () {
@@ -67,7 +67,9 @@ function AddPage () {
 			</Padding>
 			<FlexBox spacing={2}>
 				<FlexBox spacing={1}>
-					<Typography type="title" tag="h1">새로운 태스크</Typography>
+					<h1>
+						<Text size='32px' weight='700' color='var(--black-dark)' lineHeight='38.73px'>새로운 태스크</Text>
+					</h1>
 					<hr/>
 				</FlexBox> {/* form */}
 				<TextInput

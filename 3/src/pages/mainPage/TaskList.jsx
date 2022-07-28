@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import TaskItem from './TaskItem';
 import FlexBox from '../../component/layout/FlexBox';
-import Typography from '../../component/text/Typography';
 import Text from '../../component/text/Text';
 
 const EmptyListMsg = styled.div`
@@ -11,7 +10,9 @@ const EmptyListMsg = styled.div`
 
 const TaskList = ({title, tasks, onClick, active}) => (
 	<FlexBox spacing={2}>
-		<Typography type="section-title" tag="h3"> {title} </Typography>
+		<h3>
+			<Text size='18px' weight='700' color='var(--black-main)'> {title} </Text>
+		</h3>
 		{
 			tasks.length !== 0 ?
 				tasks.map((task) =>

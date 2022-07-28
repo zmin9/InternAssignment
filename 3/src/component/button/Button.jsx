@@ -1,7 +1,7 @@
 import {css} from 'styled-components';
 import BasicButton from './BasicButton';
-import Typography from '../text/Typography';
 import FlexBox from '../layout/FlexBox';
+import Text from '../text/Text';
 
 
 const buttonSize = {
@@ -46,9 +46,9 @@ const Button = ({children, type, size, position, ...props}) =>
 		buttonPosition={buttonPosition[position]}
 		{...props}
 	>
-		<Typography type="button">
+		<Text size='15px' weight='600' lineHeight='18.15px'>
 			{children}
-		</Typography>
+		</Text>
 	</BasicButton>
 ;
 
@@ -62,7 +62,7 @@ const IconButton = ({children, type, size, position, label,...props}) =>
 		{label?
 			<FlexBox row alignCenter spacing={1}>
 				{children}
-				<Typography type="button"> {label} </Typography>
+				<Text size='15px' weight='600' lineHeight='18.15px'> {label} </Text>
 			</FlexBox>
 			:
 			children
