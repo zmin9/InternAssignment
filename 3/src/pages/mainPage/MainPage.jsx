@@ -63,8 +63,7 @@ function MainPage() {
 							</h1>
 							<IconButton
 								round
-								type="secondary"
-								size="md"
+								colorType="secondary"
 								onClick={() => setIsCalendarOpen(true)}>
 								<Icon type="more" size={24}/>
 							</IconButton>
@@ -106,6 +105,8 @@ function MainPage() {
 					&&
 					<PositionFixed right="16px" bottom="40px">
 						<IconButton
+							colorType="primary"
+							size={3}
 							round
 							onClick={() => nav('/add')}>
 							<Icon type="plus" size={24}/>

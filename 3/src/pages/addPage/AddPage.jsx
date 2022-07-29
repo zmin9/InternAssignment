@@ -62,7 +62,7 @@ function AddPage () {
 	return (
 		<Padding top="55px" side="var(--spacing-2)">
 			<Padding bottom="var(--spacing-1)">
-				<IconButton type="secondary" size="md" label="뒤로가기" onClick={() => nav('/')}>
+				<IconButton colorType="secondary" size="md" label="뒤로가기" onClick={() => nav('/')}>
 					<Icon type="back" size={24}/>
 				</IconButton>
 			</Padding>
@@ -93,7 +93,7 @@ function AddPage () {
 				</FlexBox>
 			</FlexBox>
 			<PositionFixed bottom="37px">
-				<Button fullWidth onClick={addTaskOnClickHandler}>태스크 추가</Button>
+				<Button size={3} colorType='primary' fullWidth onClick={addTaskOnClickHandler}>태스크 추가</Button>
 			</PositionFixed>
 			{isToastPopped1
 				&& <ToastMessage
