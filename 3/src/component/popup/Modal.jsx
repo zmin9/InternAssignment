@@ -15,7 +15,7 @@ const Modal = ({children, background, onClick}) => (
 			<Background background={background} onClick={onClick}>hi</Background>
 		</PositionFixed>
 		<PositionFixed right="36px" left="36px" center>
-			<Card size='lg'>{children}</Card>
+			<Card>{children}</Card>
 		</PositionFixed>
 	</>
 );

@@ -51,7 +51,7 @@ const TaskItem = ({ task, onClick, active }) => {
 				onChange={()=>setIsChecked(active? !isChecked : task.isDone)}
 			/>
 			<label htmlFor={`task${task.id}`}>
-				<FlexBox row spacing={2}>
+				<FlexBox row spacing={3}>
 					<CheckBox className="check-box">
 						<Icon type='check'/>
 					</CheckBox>

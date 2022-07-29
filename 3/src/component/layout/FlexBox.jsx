@@ -1,35 +1,27 @@
-import styled, {css} from 'styled-components';
+import styled from 'styled-components';
 
 const FlexContainer = styled.div`
   display: flex;
-	${p => css`
-    flex-wrap: ${p.wrap};
-    flex-direction: ${p.row};
-    align-items: ${p.alignCenter};
-    gap: ${p.gap};
+  ${({ theme, wrap, row, alignCenter, gap }) => `
+    flex-wrap: ${wrap};
+    flex-direction: ${row};
+    align-items: ${alignCenter};
+    gap: ${theme.spacing[gap]};
 	`}
-	& > * {
+  & > * {
     flex-shrink: 0;
   }
 `;
 
-const FlexBox = ({children, spacing, row, alignCenter, wrap}) => {
-	const checkIterable = (obj) => {
-		if (obj === null || obj === undefined) return false;
-		return typeof obj[Symbol.iterator] === 'function';
-	};
-	return (
-		<FlexContainer
-			row={row ? 'row' : 'column'}
-			alignCenter={alignCenter && 'center'}
-			gap={`var(--spacing-${spacing})`}
-			wrap={wrap && 'wrap'}
-		>
-			{checkIterable(children)
-				? children.flat().map((child) => child)
-				: children}
-		</FlexContainer>
-	);
-};
+const FlexBox = ({children, spacing, row, alignCenter, wrap}) =>
+	<FlexContainer
+		row={row ? 'row' : 'column'}
+		alignCenter={alignCenter && 'center'}
+		gap={spacing}
+		wrap={wrap && 'wrap'}
+	>
+		{children}
+	</FlexContainer>
+;
 
 export default FlexBox;

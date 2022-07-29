@@ -1,34 +1,21 @@
-import styled, {css} from 'styled-components';
+import styled from 'styled-components';
 import {useEffect, useState} from 'react';
 import Card from '../container/Card';
 import Text from '../text/Text';
 import PositionFixed from '../layout/PositionFixed';
 
 const ToastMessageCard = styled(Card)`
-  ${props => props.messageColor};
-  ${props => props.transitionPos};
-  box-shadow: var(--toast-shadow-color, var(--black-light)) 0 0 8px ;
-  color: var(--toast-color, var(--black-main));
-  
+  ${(props) => props.transitionPos};
+  ${({ theme, messageType }) => theme.toastMessage[messageType]};
+
   transition: 0.4s;
 `;
 
-const messageColorByType = {
-	success: css`
-    --toast-shadow-color: var(--main-color-90);
-    --toast-color: var(--main-color-50);
-  `,
-	error: css`
-    --toast-shadow-color: var(--danger-color-90);
-    --toast-color: var(--danger-color-50);
-  `,
-};
-
-const mountStyle = css`
+const mountStyle = `
   transform: translateY(20px);
   opacity: 0
 `;
-const unmountStyle = css`
+const unmountStyle = `
   opacity: 0;
 `;
 
@@ -53,9 +40,7 @@ const ToastMessage = ({ children, type, setToastState }) => {
 	return (
 		<PositionFixed left='64px' right='64px' bottom='15%'>
 			<ToastMessageCard
-				size="sm"
-				position="bottom"
-				messageColor={messageColorByType[type]}
+				messageType={type}
 				transitionPos={transitionPos}
 			>
 				<Text size="14px">{children}</Text>

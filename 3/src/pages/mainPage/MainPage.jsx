@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import TaskList from './TaskList';
 import Icon from '../../component/Icons';
-import { IconButton } from '../../component/button/Button';
-import CategoryChip from '../../component/button/CategoryChip';
+import { IconButton } from '../../component/clickable/Button';
+import CategoryChip from '../../component/clickable/CategoryChip';
 import CustomCalendar from '../../component/calendar/CustomCalendar';
 import Padding from '../../component/container/Padding';
 import ScrollX from '../../component/container/Scroll';
@@ -53,7 +53,7 @@ function MainPage() {
 	return (
 		<>
 			<Padding top="76px" side="var(--spacing-2)">
-				<FlexBox spacing={2}>
+				<FlexBox spacing={3}>
 					<FlexBox spacing={1}>
 						<FlexBox row spacing={1}>
 							<h1>
@@ -87,7 +87,7 @@ function MainPage() {
 						</ScrollX>
 					</FlexBox>
 					<hr/>
-					<FlexBox spacing={4}>
+					<FlexBox spacing={6}>
 						<TaskList
 							title={doingTaskListTitle}
 							tasks={doingTaskArr}

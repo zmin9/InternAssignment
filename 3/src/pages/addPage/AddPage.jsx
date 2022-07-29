@@ -1,12 +1,12 @@
 import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import FlexBox from '../../component/layout/FlexBox';
-import { Button, IconButton } from '../../component/button/Button';
+import { Button, IconButton } from '../../component/clickable/Button';
 import Icon from '../../component/Icons';
 import Padding from '../../component/container/Padding';
 import TextInput from '../../component/textInput/TextInput';
 import ToastMessage from '../../component/popup/ToastMessage';
-import CategoryChip from '../../component/button/CategoryChip';
+import CategoryChip from '../../component/clickable/CategoryChip';
 import useTaskData from '../../useTaskData';
 import Text from '../../component/text/Text';
 import PositionFixed from '../../component/layout/PositionFixed';
@@ -21,7 +21,6 @@ function AddPage () {
 	const [isToastPopped1, setIsToastPopped1] = useState(false);
 	const [isToastPopped2, setIsToastPopped2] = useState(false);
 	const [toastContent, setToastContent] = useState({});
- 
 	const getToastMessageContent = () => {
 		if (titleRef.current.value.trim() === '') {
 			return {
@@ -62,11 +61,11 @@ function AddPage () {
 	return (
 		<Padding top="55px" side="var(--spacing-2)">
 			<Padding bottom="var(--spacing-1)">
-				<IconButton colorType="secondary" size="md" label="뒤로가기" onClick={() => nav('/')}>
+				<IconButton colorType="secondary" label="뒤로가기" onClick={() => nav('/')}>
 					<Icon type="back" size={24}/>
 				</IconButton>
 			</Padding>
-			<FlexBox spacing={2}>
+			<FlexBox spacing={3}>
 				<FlexBox spacing={1}>
 					<h1>
 						<Text size='32px' weight='700' color='var(--black-dark)' lineHeight='38.73px'>새로운 태스크</Text>

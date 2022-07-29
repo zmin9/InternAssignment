@@ -1,9 +1,9 @@
-import Clickable from './Clickable';
+import BasicClickable from './BasicClickable';
 import FlexBox from '../layout/FlexBox';
 import Text from '../text/Text';
 
 const Button = ({children, colorType, size, ...props}) =>
-	<Clickable
+	<BasicClickable
 		clickableType='button'
 		colorType={colorType}
 		size={size}
@@ -12,11 +12,11 @@ const Button = ({children, colorType, size, ...props}) =>
 		<Text size='15px' weight='600' lineHeight='18.15px'>
 			{children}
 		</Text>
-	</Clickable>
+	</BasicClickable>
 ;
 
 const IconButton = ({children, colorType, size, label,...props}) =>
-	<Clickable
+	<BasicClickable
 		clickableType='button'
 		colorType={colorType}
 		size={size}
@@ -30,7 +30,7 @@ const IconButton = ({children, colorType, size, label,...props}) =>
 			:
 			children
 		}
-	</Clickable>
+	</BasicClickable>
 ;
 
 

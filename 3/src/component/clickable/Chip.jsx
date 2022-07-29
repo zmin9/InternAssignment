@@ -1,14 +1,14 @@
-import Clickable from './Clickable';
+import BasicClickable from './BasicClickable';
 import Text from '../text/Text';
 
 function Chip({children, selected, ...props}) {
-	return <Clickable
+	return <BasicClickable
 		clickableType='chip'
 		colorType={selected? 'selected' : 'default'}
 		size={2}
 		{...props}>
 		<Text size="13px">{children}</Text>
-	</Clickable>;
+	</BasicClickable>;
 }
 
 export default Chip;

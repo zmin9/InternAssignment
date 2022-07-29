@@ -1,10 +1,8 @@
 import styled from 'styled-components';
 
 const BasicCard = styled.div`
-  ${props => props.cardSize}
-	
   padding: 16px 19px;
-  background-color: var(--bg-main-color);
+  background-color: ${({theme}) => theme.colors.bg.main};
   border-radius: 8px;
   text-align: center;
 `;

@@ -4,12 +4,12 @@ import FlexBox from '../../component/layout/FlexBox';
 import Text from '../../component/text/Text';
 
 const EmptyListMsg = styled.div`
-  padding: var(--spacing-2);
+  padding: ${({theme})=>theme.spacing[3]};
   text-align: center;
 `;
 
 const TaskList = ({title, tasks, onClick, active}) => (
-	<FlexBox spacing={2}>
+	<FlexBox spacing={3}>
 		<h3>
 			<Text size='18px' weight='700' color='var(--black-main)'> {title} </Text>
 		</h3>

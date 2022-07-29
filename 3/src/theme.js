@@ -1,11 +1,12 @@
+
 const colors = {
 	blue: {
 		main: 'hsl(205, 90%, 50%)',
 		light: 'hsl(205, 90%, 90%)',
 	},
 	red: {
-		main: 'hsl(205, 90%, 50%)',
-		light: 'hsl(205, 90%, 90%)',
+		main: 'hsl(5, 85%, 50%)',
+		light: 'hsl(5, 85%, 90%)',
 	},
 	black: {
 		dark: '#292B35',
@@ -41,6 +42,17 @@ const chip = {
 	`,
 };
 
+const toastMessage = {
+	success: `
+    box-shadow: ${colors.blue.light} 0 0 8px;
+    color: ${colors.blue.main};
+  `,
+	error: `
+    box-shadow: ${colors.red.light} 0 0 8px;
+    color: ${colors.red.main};
+  `,
+};
+
 const spacing = ['4px', '8px', '12px', '16px', '20px', '24px', '32px'];
 
 const theme = {
@@ -49,6 +61,7 @@ const theme = {
 		button,
 		chip,
 	},
+	toastMessage,
 	spacing,
 };
 

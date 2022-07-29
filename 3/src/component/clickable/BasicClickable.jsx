@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Clickable = styled.button`
+const BasicClickable = styled.button`
   
   ${({theme, clickableType, colorType}) => theme.clickableStyle[clickableType]
     && theme.clickableStyle[clickableType][colorType]}
@@ -18,4 +18,4 @@ const Clickable = styled.button`
   }
 `;
 
-export default Clickable;
+export default BasicClickable;
