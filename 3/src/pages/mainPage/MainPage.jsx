@@ -13,6 +13,7 @@ import DateManager from '../../dateManager';
 import useTaskData from '../../useTaskData';
 import Text from '../../component/text/Text';
 import PositionFixed from '../../component/layout/PositionFixed';
+import BackgroundForPopup from '../../component/popup/BackgroundForPopup';
 
 
 
@@ -115,16 +116,16 @@ function MainPage() {
 			}
 			{
 				isCalendarOpen &&
-				<Modal  // 자체적으로 state를 관리하는 경우도 있음
-					background
-					onClick={closeModal}  // 이상함
-				>
-					<CustomCalendar
-						data={data}
-						onChange={calendarOnChangeHandler}
-						value={selectedDate}
-					/>
-				</Modal>
+				<>
+					<BackgroundForPopup onClick={closeModal} />
+					<Modal>
+						<CustomCalendar
+							data={data}
+							onChange={calendarOnChangeHandler}
+							value={selectedDate}
+						/>
+					</Modal>
+				</>
 			}
 		</>
 	);
