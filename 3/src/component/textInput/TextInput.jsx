@@ -5,12 +5,12 @@ import Text from '../text/Text';
 const BasicTextInput = styled.input`
   outline: 0;
   width: 100%;
-  padding: 16px 20px;
-  background-color: var(--bg-sub-color);
+  padding: ${({ theme }) => `${theme.spacing[3]} ${theme.spacing[4]}`};
+  background-color: ${({ theme }) => theme.colors.bg.light};
   border-radius: 4px 4px 0 0;
   border-width: 0 0 2px;
   border-color: rgba(0, 0, 0, 0.3);
-  
+
   &:focus {
     border-color: rgba(0, 0, 0, 0.8);
   }

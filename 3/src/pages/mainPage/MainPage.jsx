@@ -53,7 +53,7 @@ function MainPage() {
 	};
 	return (
 		<>
-			<Padding top="76px" side="var(--spacing-2)">
+			<Padding top="76px" side="16px">
 				<FlexBox spacing={3}>
 					<FlexBox spacing={1}>
 						<FlexBox row spacing={1}>

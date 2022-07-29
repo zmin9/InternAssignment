@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const BasicCard = styled.div`
-  padding: 16px 19px;
+  padding: ${({ theme }) => `${theme.spacing[3]} 19px`};
   background-color: ${({theme}) => theme.colors.bg.main};
   border-radius: 8px;
   text-align: center;

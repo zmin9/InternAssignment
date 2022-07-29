@@ -59,8 +59,8 @@ function AddPage () {
 	};
  
 	return (
-		<Padding top="55px" side="var(--spacing-2)">
-			<Padding bottom="var(--spacing-1)">
+		<Padding top="55px" side="16px">
+			<Padding bottom="8px">
 				<IconButton colorType="secondary" label="뒤로가기" onClick={() => nav('/')}>
 					<Icon type="back" size={24}/>
 				</IconButton>

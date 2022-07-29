@@ -21,7 +21,7 @@ const HidedCheckBoxForLabel = styled.input`
       }
     }
     .title {
-      color: var(--black-light);
+      color: ${({theme}) => theme.colors.black.light};
     }
     .category {
       display: none;
@@ -37,7 +37,7 @@ const CheckBox = styled.div`
   border: solid 2px #DADADA;
   border-radius: 6px;
   
-  color: var(--black-main);
+  color: ${({theme}) => theme.colors.black.main};
 `;
 const TaskInfo = styled.div`max-width: calc(100% - 40px);`;
 

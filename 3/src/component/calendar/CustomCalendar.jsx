@@ -11,8 +11,10 @@ const CustomCalendar = ({ value, ...props }) => {
 		<Calendar
 			{...props}
 			value={value}
-			calendarType="US"
 			locale="en"
+			calendarType="US"
+			view="month"
+			showNeighboringMonth={false}
 			navigationLabel={({ date }) => `${date.getFullYear()}년 ${date.getMonth() + 1}월`}
 			nextLabel={<Icon type='calendar-right' size={24}/>}
 			prevLabel={<Icon type='calendar-left' size={24}/>}
@@ -26,8 +28,6 @@ const CustomCalendar = ({ value, ...props }) => {
 					return <div className="mark" />;
 				return null;
 			}}
-			showNeighboringMonth={false}
-			view="month"
 		/>
 	);
 };
