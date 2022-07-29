@@ -57,8 +57,8 @@ const TaskItem = ({ task, onClick, active }) => {
 					</CheckBox>
 					<TaskInfo>
 						<FlexBox spacing={0}>
-							<Text className="title" size="14px" weight="500" color="var(--black-main)" lineHeight="24px">{task.title}</Text>
-							<Text className="category" size="14px" weight="600" color="var(--black-light)">{task.category}</Text>
+							<Text className="title" size="14px" weight="500" color="black main" lineHeight="24px">{task.title}</Text>
+							<Text className="category" size="14px" weight="600" color="black light">{task.category}</Text>
 						</FlexBox>
 					</TaskInfo>
 				</FlexBox>

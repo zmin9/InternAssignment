@@ -2,8 +2,7 @@ import styled from 'styled-components';
 
 const BasicClickable = styled.button`
   
-  ${({theme, clickableType, colorType}) => theme.clickableStyle[clickableType]
-    && theme.clickableStyle[clickableType][colorType]}
+  ${({theme, clickableType, colorType}) => theme.clickableStyle[clickableType]?.[colorType]}
   
   padding: ${({theme, size})=>theme.spacing[size]};
   width: ${({theme, fullWidth}) => fullWidth && `calc(100vw - 2 * ${theme.spacing[3]})`};

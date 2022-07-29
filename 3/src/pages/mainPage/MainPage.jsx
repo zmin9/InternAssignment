@@ -57,7 +57,7 @@ function MainPage() {
 					<FlexBox spacing={1}>
 						<FlexBox row spacing={1}>
 							<h1>
-								<Text size='32px' weight='700' color='var(--black-dark)' lineHeight='38.73px'>
+								<Text size='32px' weight='700' color='black dark' lineHeight='38.73px'>
 									{selectedDate.getFullYear()}년 {selectedDate.getMonth() + 1}월 {selectedDate.getDate()}일
 								</Text>
 							</h1>
@@ -69,7 +69,7 @@ function MainPage() {
 							</IconButton>
 						</FlexBox>
 						<h2>
-							<Text size='14px' weight='600' color='var(--black-main)'>
+							<Text size='14px' weight='600' color='black main'>
 								{doingTaskArr.length}개 {doingTaskListTitle}, {doneTaskArr.length}개 완료됨
 							</Text>
 						</h2>

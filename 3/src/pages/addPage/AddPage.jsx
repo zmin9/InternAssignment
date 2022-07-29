@@ -68,7 +68,7 @@ function AddPage () {
 			<FlexBox spacing={3}>
 				<FlexBox spacing={1}>
 					<h1>
-						<Text size='32px' weight='700' color='var(--black-dark)' lineHeight='38.73px'>새로운 태스크</Text>
+						<Text size='32px' weight='700' color='black dark' lineHeight='38.73px'>새로운 태스크</Text>
 					</h1>
 					<hr/>
 				</FlexBox> {/* form */}
