@@ -10,7 +10,8 @@ const Fixed = styled.div`
 
   ${ props => props.center?
 		css`
-			top: 50%; transform: translate(0, -50%);
+			top: 50%;
+			transform: translate(0, -50%);
 		`
 		:
 		css `

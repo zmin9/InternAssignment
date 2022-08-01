@@ -17,7 +17,8 @@ function AddPage () {
 	const nav = useNavigate();
 	const titleRef = useRef();
 	const categoryRef = useRef();
-	const [selectedCategory, setSelectedCategory] = useState('+');
+	const defaultCategory = '+';
+	const [selectedCategory, setSelectedCategory] = useState(defaultCategory);
 	const [isToastPopped1, setIsToastPopped1] = useState(false);
 	const [isToastPopped2, setIsToastPopped2] = useState(false);
 	const [toastContent, setToastContent] = useState({});
@@ -35,7 +36,7 @@ function AddPage () {
 	};
 	const onClickCategoryChip = (category) => {
 		setSelectedCategory(category);
-		categoryRef.current.value = category === '+'? '' : category;
+		categoryRef.current.value = category === defaultCategory? '' : category;
 	};
 	const showToastMessage = () => {
 		setToastContent(getToastMessageContent());
@@ -54,7 +55,7 @@ function AddPage () {
 			data.addTask(titleRef.current.value.trim(), categoryRef.current.value.trim());
 			titleRef.current.value = '';
 			categoryRef.current.value = '';
-			setSelectedCategory('+');
+			setSelectedCategory(defaultCategory);
 		}
 	};
  
@@ -71,17 +72,17 @@ function AddPage () {
 						<Text size='32px' weight='700' color='black dark' lineHeight='38.73px'>새로운 태스크</Text>
 					</h1>
 					<hr/>
-				</FlexBox> {/* form */}
+				</FlexBox>
 				<TextInput
 					placeholder="태스크 제목을 입력하세요"
 					ref={titleRef}/>
 				<TextInput
 					placeholder="카테고리를 입력하세요"
-					disabled={selectedCategory !== '+'}
+					disabled={selectedCategory !== defaultCategory}
 					ref={categoryRef}
 				/>
 				<FlexBox spacing={1} wrap row>
-					{['+', ...data.getCategoryArr()].map((category, idx) =>
+					{[defaultCategory, ...data.getCategoryArr()].map((category, idx) =>
 						<CategoryChip
 							key={idx}
 							category={category}

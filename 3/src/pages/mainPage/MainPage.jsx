@@ -20,20 +20,22 @@ import BackgroundForPopup from '../../component/popup/BackgroundForPopup';
 function MainPage() {
 	
 	const data = useTaskData();
-	const defaultCategory = '전체';
+	const nav = useNavigate();
 	
+	const defaultCategory = '전체';
+	const currentDoingTitle = '진행중';
+	const pastDoingTitle = '완료하지 못함';
+	const doneTitle = '완료됨';
 	const [isCalendarOpen, setIsCalendarOpen] = useState(false);
 	const [selectedDate, setSelectedDate] = useState(DateManager.getTodayDate);
-	const [selectedCategory, setSelectedCategory] = useState(defaultCategory); // 하드코딩 X
+	const [selectedCategory, setSelectedCategory] = useState(defaultCategory);
 	const [taskArr, setTaskArr] = useState(data.getTaskArrOnDateByCategory(selectedDate, selectedCategory));
 	const doingTaskArr = taskArr.filter((task) => !task.isDone);
 	const doneTaskArr = taskArr.filter((task) => task.isDone);
-	const nav = useNavigate();
 	const isToday = DateManager.isToday(selectedDate);
+	
 	const updateTaskArr = (date, category) =>
 		setTaskArr(data.getTaskArrOnDateByCategory(date, category));
-	
-	const doingTaskListTitle = isToday ? '진행중' : '완료하지 못함';
 	
 	const taskItemOnClickHandler = (task) => {
 		data.toggleChecking(task.id);
@@ -71,7 +73,8 @@ function MainPage() {
 						</FlexBox>
 						<h2>
 							<Text size='14px' weight='600' color='black main'>
-								{doingTaskArr.length}개 {doingTaskListTitle}, {doneTaskArr.length}개 완료됨
+								{doingTaskArr.length}개 {isToday ? currentDoingTitle : pastDoingTitle},
+								{doneTaskArr.length}개 완료됨
 							</Text>
 						</h2>
 						<ScrollX>
@@ -90,12 +93,12 @@ function MainPage() {
 					<hr/>
 					<FlexBox spacing={6}>
 						<TaskList
-							title={doingTaskListTitle}
+							title={isToday ? currentDoingTitle : pastDoingTitle}
 							tasks={doingTaskArr}
 							onClick={taskItemOnClickHandler}
 							active={isToday}/>
 						<TaskList
-							title="완료됨"
+							title={doneTitle}
 							tasks={doneTaskArr}
 							onClick={taskItemOnClickHandler}
 							active={isToday}/>
