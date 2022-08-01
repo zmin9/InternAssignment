@@ -13,13 +13,13 @@ button {
     align-items: center;
 }
 .react-calendar__navigation__label {
-    color: var(--black-dark);
+    color: #292B35;
     font-size: 14px;
     font-weight: 600;
     pointer-events: none;
 }
 .react-calendar__navigation__arrow {
-    color: var(--black-dark);
+    color: #292B35;
     line-height: 0;
 }
 
@@ -33,11 +33,11 @@ button {
     font-size: 10px;
     line-height: 12px;
     text-transform: uppercase;
-    color: var(--black-light);
+    color: #B9B9BE
 }
 
 .react-calendar__tile {
-    color: var(--black-dark);
+    color: #292B35;
     padding: calc(((100vw - 110px) / 7 - 22px) / 3) 0;
     font-weight: 500;
     font-size: 14px;
@@ -49,17 +49,17 @@ abbr { text-decoration: none; }
 
 .selected-date-tile {
     border-radius: 50%;
-    background-color: var(--main-color-50);
-    color: var(--bg-main-color);
+    background-color: hsl(205, 90%, 50%);
+    color: hsl(0, 0%, 97%);
 }
 .future-date-tile {
-    color: var(--black-light);
+    color: #B9B9BE;
 }
 
 .mark {
     height: 4px;
     width: 4px;
-    background-color: var(--main-color-50);
+    background-color: hsl(205, 90%, 50%);
     position: absolute;
     transform: translate(calc((100vw - 110px) / 7 / 2 - 2px), -1px);
     border-radius: 50%;
