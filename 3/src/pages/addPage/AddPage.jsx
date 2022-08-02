@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import FlexBox from '../../component/layout/FlexBox';
 import { Button, IconButton } from '../../component/clickable/Button';
 import Icon from '../../component/Icons';
@@ -14,7 +14,6 @@ import PositionFixed from '../../component/layout/PositionFixed';
 
 function AddPage () {
 	const data = useTaskData();
-	const nav = useNavigate();
 	const titleRef = useRef();
 	const categoryRef = useRef();
 	const defaultCategory = '+';
@@ -62,9 +61,11 @@ function AddPage () {
 	return (
 		<Padding top="55px" side="16px">
 			<Padding bottom="8px">
-				<IconButton colorType="secondary" label="뒤로가기" onClick={() => nav('/')}>
-					<Icon type="back" size={24}/>
-				</IconButton>
+				<Link to="/">
+					<IconButton colorType="secondary" label="뒤로가기" >
+						<Icon type="back" size={24}/>
+					</IconButton>
+				</Link>
 			</Padding>
 			<FlexBox spacing={3}>
 				<FlexBox spacing={1}>

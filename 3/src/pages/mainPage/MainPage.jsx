@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import TaskList from './TaskList';
 import Icon from '../../component/Icons';
 import { IconButton } from '../../component/clickable/Button';
@@ -20,7 +20,6 @@ import BackgroundForPopup from '../../component/popup/BackgroundForPopup';
 function MainPage() {
 	
 	const data = useTaskData();
-	const nav = useNavigate();
 	
 	const defaultCategory = '전체';
 	const currentDoingTitle = '진행중';
@@ -105,17 +104,19 @@ function MainPage() {
 					</FlexBox>
 				</FlexBox>
 			</Padding>
-			{isToday
-					&&
+			{
+				isToday &&
+				<Link to='/add'>
 					<PositionFixed right="16px" bottom="40px">
 						<IconButton
 							colorType="primary"
 							size={3}
 							round
-							onClick={() => nav('/add')}>
+						>
 							<Icon type="plus" size={24}/>
 						</IconButton>
 					</PositionFixed>
+				</Link>
 			}
 			{
 				isCalendarOpen &&
