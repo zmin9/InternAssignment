@@ -1,11 +1,11 @@
-# 3. React.js 이용해서 만들기
+# 4. React 코드 수정
 
 ## 설명
 ### 실행 방법
 ```bash
 git clone https://github.com/zmin9/InternAssignment.git
-cd ./InternAssignment/3
-npm start
+git switch assignment3 && cd ./InternAssignment/3
+npm install && npm start
 ```
 
 개발자 도구 > `Dimensions: iPhone12 Pro` 로 설정
@@ -41,15 +41,10 @@ npm start
 * react-router-dom : `^6.3.0`, 사실 없어도 될 정도의 간단한 웹앱이지만 사용해보고 싶었다.
 
 ## 쉽지 않았던 부분
-* Thinking in React ..
-* 어디까지 컴포넌트로 만드는 것이 좋은지
+* 계속 고려한 것 : 하나의 컴포넌트에게 많은 일을 시키지 말기
+* 최적화
 
 ## 더 공부해보고 싶은 부분
-* 비동기 작업
-* 리액트 네이티브
-  * 리액트랑 비슷해 보이는데 어떻게 잘 돌아가는지
-  * 자바스크립트로 앱을 어떻게 만드는지..?
 * 타입스크립트
 
 ## 개선이 가능한 부분
-* 컴포넌트 구조 설계 (컴포넌트의 추상화 단계 설계..?)
