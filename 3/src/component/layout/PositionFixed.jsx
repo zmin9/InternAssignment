@@ -1,20 +1,20 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 const Fixed = styled.div`
 	position: fixed;
 	z-index: 2;
-	${ props => css`
+	${ props => `
 		right: ${props.r};
 		left: ${props.l};
 	`}
 
   ${ props => props.center?
-		css`
+		`
 			top: 50%;
 			transform: translate(0, -50%);
 		`
 		:
-		css `
+		`
 			top: ${props.t};
 			bottom: ${props.b};
 		`}

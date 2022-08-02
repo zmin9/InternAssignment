@@ -96,18 +96,24 @@ function AddPage () {
 				<Button size={3} colorType='primary' fullWidth onClick={addTaskOnClickHandler}>태스크 추가</Button>
 			</PositionFixed>
 			{isToastPopped1
-				&& <ToastMessage
-					type={toastContent.type}
-					setToastState={setIsToastPopped1}>
-					{toastContent.text}
-				</ToastMessage>
+				&&
+				<PositionFixed left='64px' right='64px' bottom='15%'>
+					<ToastMessage
+						type={toastContent.type}
+						setToastState={setIsToastPopped1}>
+						{toastContent.text}
+					</ToastMessage>
+				</PositionFixed>
 			}
 			{isToastPopped2
-				&& <ToastMessage
-					type={toastContent.type}
-					setToastState={setIsToastPopped2}>
-					{toastContent.text}
-				</ToastMessage>
+				&&
+				<PositionFixed left='64px' right='64px' bottom='15%'>
+					<ToastMessage
+						type={toastContent.type}
+						setToastState={setIsToastPopped2}>
+						{toastContent.text}
+					</ToastMessage>
+				</PositionFixed>
 			}
 		</Padding>
 	);

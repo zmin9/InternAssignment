@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import {useEffect, useState} from 'react';
 import Card from '../container/Card';
 import Text from '../text/Text';
-import PositionFixed from '../layout/PositionFixed';
 
 const ToastMessageCard = styled(Card)`
   ${(props) => props.transitionPos};
@@ -38,14 +37,12 @@ const ToastMessage = ({ children, type, setToastState }) => {
 	}, []);
 
 	return (
-		<PositionFixed left='64px' right='64px' bottom='15%'>
-			<ToastMessageCard
-				messageType={type}
-				transitionPos={transitionPos}
-			>
-				<Text size="14px">{children}</Text>
-			</ToastMessageCard>
-		</PositionFixed>
+		<ToastMessageCard
+			messageType={type}
+			transitionPos={transitionPos}
+		>
+			<Text size="14px">{children}</Text>
+		</ToastMessageCard>
 	);
 };
 
