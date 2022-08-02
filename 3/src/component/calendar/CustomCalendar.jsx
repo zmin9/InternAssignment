@@ -24,7 +24,7 @@ const CustomCalendar = ({ value, ...props }) => {
 					: DateManager.isFuture(date) ? 'future-date-tile'
 						: []}
 			tileContent={({ date }) => {
-				if ( data.checkWhetherTasksIsOn(date) )
+				if ( data.isThereTaskOnDate(date) )
 					return <div className="mark" />;
 				return null;
 			}}

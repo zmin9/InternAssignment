@@ -83,7 +83,7 @@ function AddPage () {
 					ref={categoryRef}
 				/>
 				<FlexBox spacing={1} wrap row>
-					{[defaultCategory, ...data.getCategoryArr()].map((category) =>
+					{[defaultCategory, ...data.getAllCategoryArr()].map((category) =>
 						<CategoryChip
 							key={category}
 							category={category}

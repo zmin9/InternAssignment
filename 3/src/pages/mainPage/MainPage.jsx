@@ -18,7 +18,6 @@ import BackgroundForPopup from '../../component/popup/BackgroundForPopup';
 
 
 function MainPage() {
-	
 	const data = useTaskData();
 	
 	const defaultCategory = '전체';
@@ -28,29 +27,19 @@ function MainPage() {
 	const [isCalendarOpen, setIsCalendarOpen] = useState(false);
 	const [selectedDate, setSelectedDate] = useState(DateManager.getTodayDate);
 	const [selectedCategory, setSelectedCategory] = useState(defaultCategory);
-	const [taskArr, setTaskArr] = useState(data.getTaskArrOnDateByCategory(selectedDate, selectedCategory));
+	
+	const taskArr = data.getTaskArrOnDateByCategory(selectedDate, selectedCategory);
 	const doingTaskArr = taskArr.filter((task) => !task.isDone);
 	const doneTaskArr = taskArr.filter((task) => task.isDone);
 	const isToday = DateManager.isToday(selectedDate);
 	
-	const updateTaskArr = (date, category) =>
-		setTaskArr(data.getTaskArrOnDateByCategory(date, category));
-	
-	const taskItemOnClickHandler = (task) => {
-		data.toggleChecking(task.id);
-		updateTaskArr(selectedDate, selectedCategory);
-	};
-	
-	const closeModal = () => setIsCalendarOpen(false);
+	const closeCalendarModal = () => setIsCalendarOpen(false);
+	const taskItemOnClickHandler = (task) => data.toggleChecking(task.id);
+	const categoryChipOnClickHandler = (category) => setSelectedCategory(category);
 	const calendarOnChangeHandler = (date) => {
 		setSelectedDate(date);
 		setSelectedCategory(defaultCategory);
-		setTaskArr(data.getTaskArrOnDateByCategory(date, defaultCategory));
-		closeModal();
-	};
-	const categoryChipOnClickHandler = (category) => {
-		setSelectedCategory(category);
-		updateTaskArr(selectedDate, category);
+		closeCalendarModal();
 	};
 	return (
 		<>
@@ -78,7 +67,7 @@ function MainPage() {
 						</h2>
 						<ScrollX>
 							<FlexBox row spacing={1}>
-								{[defaultCategory, ...data.getCategoryArrByDate(selectedDate)].map((category) =>
+								{[defaultCategory, ...data.getCategoryArrOnDate(selectedDate)].map((category) =>
 									<CategoryChip
 										key={category}
 										category={category}
@@ -121,7 +110,7 @@ function MainPage() {
 			{
 				isCalendarOpen &&
 				<>
-					<BackgroundForPopup onClick={closeModal} />
+					<BackgroundForPopup onClick={closeCalendarModal} />
 					<Modal>
 						<CustomCalendar
 							data={data}

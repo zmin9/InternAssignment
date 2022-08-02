@@ -27,7 +27,7 @@ const useTaskData = () => {
 		newArr[indexAtTaskDataArr].isDone = !newArr[indexAtTaskDataArr].isDone;
 		setTaskDataArr(newArr);
 	};
-	const getCategoryArrByDate = ( date ) => taskDataArr
+	const getCategoryArrOnDate = ( date ) => taskDataArr
 		.filter(task => DateManager.isSameDay(task.date ,date))
 		.map(task => task.category)
 		.reduce((result, category) => {
@@ -35,7 +35,7 @@ const useTaskData = () => {
 			return [...result, category];
 		}, [])
 	;
-	const getCategoryArr = () => taskDataArr
+	const getAllCategoryArr = () => taskDataArr
 		.map(task => task.category)
 		.reduce((result, category) => {
 			if (result.includes(category)) return result;
@@ -50,7 +50,7 @@ const useTaskData = () => {
 			.filter(task => task.category === category);
 	};
 	
-	const checkWhetherTasksIsOn = ( date ) => taskDataArr.some(task => DateManager.isSameDay(task.date, date));
+	const isThereTaskOnDate = ( date ) => taskDataArr.some(task => DateManager.isSameDay(task.date, date));
 	
 	useEffect(() => {
 		localStorage.setItem('tasks', JSON.stringify(taskDataArr));
@@ -59,10 +59,10 @@ const useTaskData = () => {
 	return {
 		addTask,
 		toggleChecking,
-		getCategoryArr,
-		getCategoryArrByDate,
+		getAllCategoryArr,
+		getCategoryArrOnDate,
 		getTaskArrOnDateByCategory,
-		checkWhetherTasksIsOn
+		isThereTaskOnDate
 	};
 };
 
