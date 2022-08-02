@@ -79,11 +79,11 @@ function MainPage() {
 						</h2>
 						<ScrollX>
 							<FlexBox row spacing={1}>
-								{[defaultCategory, ...data.getCategoryArrByDate(selectedDate)].map((category, idx) =>
+								{[defaultCategory, ...data.getCategoryArrByDate(selectedDate)].map((category) =>
 									<CategoryChip
-										key={idx}
+										key={category}
 										category={category}
-										selectedCategory={selectedCategory}
+										selected={category === selectedCategory}
 										onClick={categoryChipOnClickHandler}
 									/>
 								)}
