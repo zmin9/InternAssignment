@@ -61,7 +61,7 @@ function MainPage() {
 						</FlexBox>
 						<h2>
 							<Text size='14px' weight='600' color='black main'>
-								{doingTaskArr.length}개 {isToday ? currentDoingTitle : pastDoingTitle},
+								{doingTaskArr.length}개 {isToday ? currentDoingTitle : pastDoingTitle},&nbsp;
 								{doneTaskArr.length}개 완료됨
 							</Text>
 						</h2>
